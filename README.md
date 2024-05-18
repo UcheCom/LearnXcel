@@ -1,6 +1,19 @@
 # LearnXcel - The MVP
+Your best interactive online platform designed to facilitate learning through engaging courses, quizzes, and interactive content.
 
-#### Key Features of LearnXcel:
+`Unlock your potential where learning knows no bounds` 🚀
+
+## Table of Content
+- [Key Features](#key-features)
+- [Environment](#environment)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Examples of use](#examples-of-use)
+- [Bugs](#bugs)
+- [Authors](#authors)
+- [License](#license)
+  
+#### Key Features
 
 - Authentification
 - Register (Student or Instrcutor)
@@ -15,17 +28,6 @@
 - Manage profil (Instructor, Student)
 - Security and Privacy
 - ... in development <\>
-
-## Table of Content
-
-- [Environment](#environment)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Strutures API & UI](#file-descriptions)
-- [Examples of use](#examples-of-use)
-- [Bugs](#bugs)
-- [Authors](#authors)
-- [License](#license)
 
 ## Environment
 
@@ -43,24 +45,22 @@ This project can run anywhere
 
 - Clone this repository: `git clone https://github.com/UcheCom/LearnXcel.git`
 
-  #### Frontend project
+  ### Frontend project
 
 - Access frontend project directory: `cd LearnXcel/frontend`
 - Install dependencies `npm i`
 - You can install angular : `npm i @angular/cli`
 - Start project `npm start` or `ng serve` if you have angular on your device
-
 - Go to `localhost:4200` (by default) or specified port on your browser and enjoy 😍
 
-  #### Backend project
+  ### Backend project
 
   - Access backend project directory: `cd LearnXcel/backend`
   - **Write suite of process here**
   - Install dependancies ??: `process here`
   - Run api with ?? `process here`
-
-## File Descriptions
-
+ 
+  - 
 ## Examples of use
 
 Credentials to login:
@@ -73,10 +73,12 @@ Credentials to login:
 No known bugs at this time.
 
 ## Authors
-
-Alban Okoby - [Github](https://github.com/alban-okoby) | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
-
-**Author names et links here**
+- Uchenna Oko - [Github](https://github.com/UcheCom)
+- Alban Okoby - [Github](https://github.com/alban-okoby) | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
+- Zahira Khattou - [Github](https://github.com/alban-okoby)
+- Benjamin Atsu - [Github](https://github.com/KwabinaIverson)
+  
+**Please complete your names et links here**
 
 
 ## License
