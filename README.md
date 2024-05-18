@@ -1,18 +1,19 @@
 # LearnXcel - The MVP
 
-#### Functionalities of LearnXcel:
+#### Key Features of LearnXcel:
 
 - Authentification
-- Register
-- Confirm Registration by Email
-- Create Course (update, delete, archive)
-- Create Quiz (update, delete, archive)
+- Register (Student or Instrcutor)
+- Course Management
+- Content Deliver
+- Interactive Quizzes and Assignments
 - Enroll on course
+- Progress Tracking and Analytics
 - Follow Instructor
-- Challenge (Quiz)
 - Search course
 - Search instructor
 - Manage profil (Instructor, Student)
+- Security and Privacy
 - ... in development <\>
 
 ## Table of Content
