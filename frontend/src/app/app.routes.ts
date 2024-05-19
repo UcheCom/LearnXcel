@@ -11,7 +11,7 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
-  
+
   {
     path: '',
     component: PagesLayoutComponent,
@@ -26,7 +26,7 @@ export const routes: Routes = [
       },
       // Admin Pages
       {
-        path: 'owner-admin',
+        path: 'owner/admin',
         loadChildren: () =>
           import('./pages/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
       },

@@ -28,7 +28,7 @@ import { DashStatisticsComponent } from './dash-statistics/dash-statistics.compo
 })
 export class DashboardLayoutComponent {
   charts: boolean = false;
-  isStudent: boolean = true;
-  isInstructor: boolean = false;
+  isStudent: boolean = false;
+  isInstructor: boolean = true;
   isAdmin: boolean = false;
 }
