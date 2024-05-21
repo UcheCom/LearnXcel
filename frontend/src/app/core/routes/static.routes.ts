@@ -4,9 +4,17 @@ export class StaticRoutes {
   // Home page
   HOME: string = `${this.basePath}`;
 
+  private auth: string = `${this.basePath}/authentification`;
   private admin: string = `${this.basePath}/owner/admin`;
   private instructor: string = `${this.basePath}/instructor`;
   private student: string = `${this.basePath}/student`;
+
+  // GLOBAL ROUTES
+  COURSES: string = `${this.basePath}/courses`;
+  QUIZ: string = `${this.basePath}/quiz`;
+  
+  // AUTH ROUTES
+  AUTH: string = `${this.auth}`;
 
   // ADMIN ROUTES
   ADMIN_HOME: string = `${this.admin}/dashboard`;
@@ -26,7 +34,7 @@ export class StaticRoutes {
   // STUDENT ROUTES
   STUDENT_HOME: string = `${this.student}/dashboard`;
   STUDENT_PROFILE: string = `${this.student}/profile`;
-  STUDENT_COURSES: string = `${this.student}/courses`;
+  STUDENT_COURSE_LIST: string = `${this.student}/course`;
   STUDENT_QUIZ: string = `${this.student}/quiz`;
   STUDENT_REVIEW: string = `${this.student}/reviews`;
   STUDENT_SETTINGS: string = `${this.student}/settings`;

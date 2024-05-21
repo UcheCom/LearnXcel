@@ -9,6 +9,7 @@ export const routes: Routes = [
   // Authentification page
   {
     path: 'auth',
+    title: 'LearnXcel | Authentification',
     loadChildren: () => import('./auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
 
@@ -17,10 +18,10 @@ export const routes: Routes = [
     component: PagesLayoutComponent,
     children: [
       // Home Page
-      { path: '', component: HomeComponent },
+      { path: '', component: HomeComponent, title: 'LearnXcel | Home' },
       // courses pages
       {
-        path: 'course',
+        path: 'courses',
         loadChildren: () =>
           import('./pages/course/course.routes').then((m) => m.COURSE_ROUTES),
       },
@@ -33,7 +34,7 @@ export const routes: Routes = [
 
       // Instructors Pages
       {
-        path: 'instructor',
+        path: 'instructors',
         loadChildren: () =>
           import('./pages/instructor/instructor.routes').then(
             (m) => m.INSTRUCTOR_ROUTES

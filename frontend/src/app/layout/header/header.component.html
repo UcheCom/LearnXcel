@@ -20,13 +20,28 @@
             <nav>
               <ul>
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" href="#">Home
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.HOME }}" routerLinkActive="active">Home
                   </a>
                 </li>
-                <li>
-                  <a class="headerarea__has__dropdown" href="#">Dashboard
-                  </a>
-                </li>
+                @if (isLogged) {
+                  @if (isAdmin) {
+                    <li>
+                      <a class="headerarea__has__dropdown" href="#">Dashboard
+                      </a>
+                    </li>
+                  } @else if (isInstructor) {
+                    <li>
+                      <a class="headerarea__has__dropdown" href="#">Dashboard
+                      </a>
+                    </li>
+                  }
+                  @else if (isStudent) {
+                    <li>
+                      <a class="headerarea__has__dropdown" href="#">Dashboard
+                      </a>
+                    </li>
+                  }                     
+                }
                 <li class="mega__menu position-static">
                   <a class="headerarea__has__dropdown" href="#">Courses
                   </a>
