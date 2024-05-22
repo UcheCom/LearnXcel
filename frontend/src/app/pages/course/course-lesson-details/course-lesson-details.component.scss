@@ -1,58 +1,6 @@
 @media screen and (min-width: 992px) {
   .tution {
     margin-top: 7rem;
+
   }
-}
-
-.tution {
-  display: flex;
-}
-.left-panel {
-  width: 30%;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-.accordion {
-  background-color: #f1f1f1;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-.active, .accordion:hover {
-  background-color: #ccc;
-}
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
-.lesson-content {
-  padding: 15px 0;
-}
-.lesson-content a {
-  text-decoration: none;
-  color: #007BFF;
-}
-.lesson-content a:hover {
-  text-decoration: underline;
-}
-
-.right-panel {
-  width: 70%;
-  padding: 20px;
-}
-.video-content {
-  background-color: #f1f1f1;
-  padding: 20px;
-  border-radius: 10px;
-}
-.video-content h2 {
-  margin-top: 0;
 }

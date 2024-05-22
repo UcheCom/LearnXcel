@@ -1,3 +1,1 @@
-export class TestServiceExport {
-  private id?: string;
-}
+export { CourseService } from './course.service';
