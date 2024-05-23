@@ -35,7 +35,7 @@ This project can run anywhere
 
 ## Technologies
 
-- Frontend: [ HTML, CSS, JavaScript & TypeScript, Angular 17+]
+- Frontend: [ HTML, CSS, JavaScript & TypeScript, Angular 17+ ]
 - Backend: [ ???? ]
 - Database: [MySQL 8+](https://dev.mysql.com/downloads/installer/)
 - Version Control: [Install Git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git)
@@ -73,7 +73,7 @@ Credentials to login:
 No known bugs at this time.
 
 ## Authors
-- Uchenna Oko - [Github](https://github.com/UcheCom)
+- Uchenna Oko - [Github](https://github.com/UcheCom) | [Linkedln](https://linkedin.com/in/uchennaoko) | [X](https://x.com/Uchenna_Com001)
 - Alban Okoby - [Github](https://github.com/alban-okoby) | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
 - Zahira Khattou - [Github](https://github.com/alban-okoby)
 - Benjamin Atsu - [Github](https://github.com/KwabinaIverson)
