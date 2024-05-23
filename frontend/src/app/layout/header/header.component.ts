@@ -14,23 +14,23 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   staticRoutes: StaticRoutes = new StaticRoutes(); 
-  isStudent: boolean = true;
-  isInstructor: boolean = false;
+  isStudent: boolean = false;
+  isInstructor: boolean = true;
   isAdmin: boolean = false;
   isLogged: boolean = true;
 
-  access_learnxcel_level = sessionStorage.getItem('access_learnxcel_level');
+  access_learnxcel_level = sessionStorage.getItem('learnxcel_access_level');
 
   constructor() { 
-    if (this.access_learnxcel_level == "student") {
+    if (this.access_learnxcel_level == "student" || this.access_learnxcel_level == "STUDENT") {
       this.isStudent = true;
       this.isInstructor = false;
       this.isAdmin = false;
-    } else if (this.access_learnxcel_level == "instructor") {
+    } else if (this.access_learnxcel_level == "instructor" || this.access_learnxcel_level == "INSTRUCTOR") {
       this.isStudent = false;
       this.isInstructor = true;
       this.isAdmin = false;
-    } else if (this.access_learnxcel_level == "admin") {
+    } else if (this.access_learnxcel_level == "admin" || this.access_learnxcel_level == "ADMIN") {
       this.isStudent = false;
       this.isInstructor = false;
       this.isAdmin = true;

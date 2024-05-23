@@ -11,13 +11,14 @@ export interface Course {
   material: string;
   summerQuiz: string;
   category: CourseCategory;
-  reviews: Review[];
+  reviews: Review;
   level: number;
   status: string;
   duration: number;
   rating: number;
   enrolled: number;
   totalStudent: number;
+  tags: string[];
   // More
 
 }

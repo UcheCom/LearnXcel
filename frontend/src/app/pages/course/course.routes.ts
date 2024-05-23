@@ -11,12 +11,12 @@ import { CourseLessonDetailsComponent } from './course-lesson-details/course-les
 export const COURSE_ROUTES: Routes = [
   { path: '', component: CourseListComponent },
   { path: ':courseId/details', component: CourseDetailsComponent, title: 'LearnXcel | Course Details' },
-  { path: ':courseId/details/lesson/:lessonId/details', component: CourseLessonDetailsComponent, title: 'LearnXcel | Lesson Details' },
+  { path: ':courseId/details/lessons', component: CourseLessonDetailsComponent, title: 'LearnXcel | Lesson Details' },
 
   // Not yet used
   { path: 'list-by-category', component: CourseListByCategoryComponent },
   { path: ':courseId/:courseTitle', component: CourseListByCategoryComponent },
 
-  // When any routes is not found, redirect to home
+  // When any routes is dont matches, redirect to home
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

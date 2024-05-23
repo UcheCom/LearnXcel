@@ -20,45 +20,53 @@
             <nav>
               <ul>
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.HOME }}" routerLinkActive="active">Home
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.HOME }}"
+                    routerLinkActive="active">Home
                   </a>
                 </li>
                 @if (isLogged) {
-                  @if (isAdmin) {
-                    <li>
-                      <a class="headerarea__has__dropdown" href="#">Dashboard
-                      </a>
-                    </li>
-                  } @else if (isInstructor) {
-                    <li>
-                      <a class="headerarea__has__dropdown" href="#">Dashboard
-                      </a>
-                    </li>
-                  }
-                  @else if (isStudent) {
-                    <li>
-                      <a class="headerarea__has__dropdown" href="#">Dashboard
-                      </a>
-                    </li>
-                  }                     
+                @if (isAdmin) {
+                <li>
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.ADMIN_DASHBOARD }}"
+                    routerLinkActive="active">
+                    Dashboard
+                  </a>
+                </li>
+                } @else if (isInstructor) {
+                <li>
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.INSTRUCTOR_DASHBOARD }}"
+                    routerLinkActive="active">Dashboard
+                  </a>
+                </li>
+                }
+                @else if (isStudent) {
+                <li>
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.STUDENT_DASHBOARD }}"
+                    routerLinkActive="active">Dashboard
+                  </a>
+                </li>
+                }
                 }
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" href="#">Courses
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.COURSES }}"
+                    routerLinkActive="active">Courses
                   </a>
                 </li>
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" href="#">Quiz
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.QUIZ }}"
+                    routerLinkActive="active">Quiz
                   </a>
                 </li>
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" href="#">About
+                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.TEAM }}"
+                    routerLinkActive="active">Team
                   </a>
                 </li>
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" href="#">Contact
+                  <a class="headerarea__has__dropdown" [attr.href]="'{{ staticRoutes.HOME }}#footer-contact'"
+                    routerLinkActive="active">Contact
                   </a>
                 </li>
-
               </ul>
             </nav>
           </div>
@@ -80,7 +88,7 @@
       <div class="row align-items-center">
         <div class="col-6">
           <div class="mobile-logo">
-            <a class="logo__dark" href="#">
+            <a class="logo__dark" routerLink="{{ staticRoutes.HOME }}" routerLinkActive="active">
               <!-- <img loading="lazy" src="assets/img/logo/logo.png" alt="logo"> -->
               LearnXcel</a>
           </div>
@@ -116,7 +124,7 @@
 
         <nav>
           <ul class="mobile-menu">
-            <li class="menu-item-has-children"><a href="index">Home</a></li>
+            <li class="menu-item-has-children"><a [attr.href]="'{{ staticRoutes.HOME }}'">Home</a></li>
 
             <!-- When he/she is plateform owner -->
             @if (isAdmin) {
@@ -178,109 +186,46 @@
             }
 
             <li class="mega__menu position-static">
-              <a class="headerarea__has__dropdown" href="#">Courses
+              <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.COURSES }}"
+                routerLinkActive="active">Courses
               </a>
             </li>
             <li class="mega__menu position-static">
-              <a class="headerarea__has__dropdown" href="#">Quiz
+              <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.QUIZ }}" routerLinkActive="active">Quiz
               </a>
             </li>
             <li class="mega__menu position-static">
-              <a class="headerarea__has__dropdown" href="#">About
+              <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.TEAM }}" routerLinkActive="active">Team
               </a>
             </li>
             <li class="mega__menu position-static">
-              <a class="headerarea__has__dropdown" href="#">Contact
+              <a class="headerarea__has__dropdown" [attr.href]="'{{ staticRoutes.HOME }}#footer-contact'">Contact
               </a>
             </li>
-            <li class="menu-item-has-children "><a href="dashboard/admin-dashboard">Dashboard</a>
-
-              <ul class="dropdown">
-                <li class="menu-item-has-children">
-                  <a href="#">Admin</a>
-
-                  <ul class="dropdown">
-                    <li><a href="dashboard/admin-dashboard">Admin Dashboard</a></li>
-                    <li><a href="dashboard/admin-profile">Admin Profile</a></li>
-                    <li><a href="dashboard/admin-message">Message</a></li>
-                    <li><a href="dashboard/admin-course">Courses</a></li>
-                    <li><a href="dashboard/admin-reviews">Review</a></li>
-                    <li><a href="dashboard/admin-quiz-attempts">Admin Quiz</a></li>
-
-                    <li><a href="dashboard/admin-settings">Settings</a></li>
-                  </ul>
-                </li>
-
-                <li class="menu-item-has-children">
-                  <a href="#">Instructor</a>
-                  <ul class="dropdown">
-                    <li><a href="dashboard/instructor-dashboard">Inst. Dashboard</a></li>
-                    <li><a href="dashboard/instructor-profile">Inst. Profile</a></li>
-                    <li><a href="dashboard/instructor-message">Message</a></li>
-                    <li><a href="dashboard/instructor-reviews">Review</a></li>
-                    <li><a href="dashboard/instructor-my-quiz-attempts">My Quiz</a></li>
-                    <li><a href="dashboard/instructor-order-history">Order History</a></li>
-                    <li><a href="dashboard/instructor-course">My Courses</a></li>
-                    <li><a href="dashboard/instructor-announcments">Announcements</a></li>
-                    <li><a href="dashboard/instructor-quiz-attempts">Quiz Attempts</a></li>
-                    <li><a href="dashboard/instructor-assignments">Assignment</a></li>
-                    <li><a href="dashboard/instructor-settings">Settings</a></li>
-                  </ul>
-                </li>
-
-                <li class="menu-item-has-children">
-                  <a href="#">Student</a>
-                  <ul class="dropdown">
-                    <li><a href="dashboard/student-dashboard">Dashboard</a></li>
-                    <li><a href="dashboard/student-profile">Profile</a></li>
-                    <li><a href="dashboard/student-message">Message</a></li>
-                    <li><a href="dashboard/student-enrolled-courses">Enrolled Courses</a></li>
-                    <li><a href="dashboard/student-reviews">Review</a></li>
-                    <li><a href="dashboard/student-my-quiz-attempts">My Quiz</a></li>
-                    <li><a href="dashboard/student-assignments">Assignment</a></li>
-                    <li><a href="dashboard/student-settings">Settings</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-
           </ul>
         </nav>
-
       </div>
-
     </div>
     <div class="mobile-curr-lang-wrap">
-      <div class="single-mobile-curr-lang">
-        <a class="mobile-language-active" href="#">Language <i class="icofont-thin-down"></i></a>
-        <div class="lang-curr-dropdown lang-dropdown-active">
-          <ul>
-            <li><a href="#">English (US)</a></li>
-            <li><a href="#">English (UK)</a></li>
-            <li><a href="#">Spanish</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- <div class="single-mobile-curr-lang">
-                        <a class="mobile-currency-active" href="#">Currency <i class="icofont-thin-down"></i></a>
-                        <div class="lang-curr-dropdown curr-dropdown-active">
-                            <ul>
-                                <li><a href="#">USD</a></li>
-                                <li><a href="#">EUR</a></li>
-                                <li><a href="#">Real</a></li>
-                                <li><a href="#">BDT</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-
       <div class="single-mobile-curr-lang">
         <a class="mobile-account-active" href="#">My Account <i class="icofont-thin-down"></i></a>
         <div class="lang-curr-dropdown account-dropdown-active">
           <ul>
             <li><a href="login">Login</a></li>
             <li><a href="login">/ Create Account</a></li>
-            <li><a href="login">My Account</a></li>
+            
+            <!-- Start When he/she is logged -->
+            @if (isLogged) {
+              @if (isAdmin) {
+                <li><a routerLink="{{ staticRoutes.ADMIN_PROFILE }}" routerLinkActive="active">My Profil</a></li>
+              } @else if (isInstructor) {
+                <li><a routerLink="{{ staticRoutes.INSTRUCTOR_PROFILE }}" routerLinkActive="active">My Profil</a></li>
+              } @else if (isStudent) {
+                <li><a routerLink="{{ staticRoutes.STUDENT_PROFILE }}" routerLinkActive="active">My Profil</a></li>
+              }
+            }
+            <!-- End, When he/she is logged -->
+
           </ul>
         </div>
       </div>

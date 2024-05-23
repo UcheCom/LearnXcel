@@ -1,25 +1,3 @@
-<section class="tution">
-  <div class="left-panel">
-    <h2>Leçons</h2>
-    <div *ngFor="let lesson of lessons">
-      <button class="accordion" (click)="togglePanel(lesson.id)">{{lesson.title}}</button>
-      <div class="panel" [ngStyle]="{'display': lesson.isOpen ? 'block' : 'none'}">
-        <div class="lesson-content">
-          <a href="#" *ngFor="let content of lesson.contents">{{content}}</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="right-panel">
-    <div class="video-content">
-      <h2>Video Content Lesson 01</h2>
-      <img src="https://img.youtube.com/vi/your-video-id/hqdefault.jpg" alt="Self-Intro Video"
-        style="width:100%; border-radius: 10px;">
-      <p>Watch on <a href="https://www.youtube.com/watch?videoID" target="_blank">YouTube</a></p>
-    </div>
-  </div>
-</section>
 <div class="tution sp_bottom_100 sp_top_50">
   <div class="container-fluid full__width__padding">
     <div class="row">

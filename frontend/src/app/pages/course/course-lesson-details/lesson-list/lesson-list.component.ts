@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+// Custom imports
+import { Lesson } from '../../../../core/models/index.models';
 
 @Component({
   selector: 'app-lesson-list',
@@ -8,45 +12,41 @@ import { Component } from '@angular/core';
   templateUrl: './lesson-list.component.html',
   styleUrl: './lesson-list.component.scss'
 })
-export class LessonListComponent {
-  lessons = [
-    {
-      id: 1,
-      title: 'Leçon #01',
-      contents: ['Course Intro - 3.27 min', 'Course Outline - 5.00 min', 'Course Outline - 7.00 min'],
-      material: 'Leçon #01',
-      summerQuiz: 'Summer Quiz',
-    },
-    {
-      id: 2,
-      title: 'Leçon #02',
-      contents: ['Course Intro - 3.27 min', 'Course Outline - 5.00 min', 'Course Outline - 7.00 min', 'Course Materials', 'Summer Quiz', 'Assignment'],
-      material: 'Leçon #01',
-      summerQuiz: 'Summer Quiz',
-    },
-    {
-      id: 3,
-      title: 'Leçon #03',
-      contents: ['Course Intro - 3.27 min', 'Course Outline - 5.00 min', 'Course Outline - 7.00 min', 'Course Materials', 'Summer Quiz', 'Assignment'],
-      material: 'Leçon #01',
-      summerQuiz: 'Summer Quiz',
-    },
-    {
-      id: 4,
-      title: 'Leçon #04',
-      contents: ['Course Intro - 3.27 min', 'Course Outline - 5.00 min', 'Course Outline - 7.00 min', 'Course Materials', 'Summer Quiz', 'Assignment'],
-      material: 'Leçon #01',
-      summerQuiz: 'Summer Quiz',
-    },
-  ];
+export class LessonListComponent implements OnInit {
+  lessons: Lesson[] = []
 
-  // togglePanel(id: number) {
-  //   this.lessons.forEach(lesson => {
-  //     if (lesson.id === id) {
-  //       lesson.isOpen = !lesson.isOpen;
-  //     } else {
-  //       lesson.isOpen = false;
-  //     }
-  //   });
-  // }
+  constructor(private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.currentCourseLesson();
+      
+  }
+
+  
+  currentCourseLesson() {
+    // this.activatedRoute.paramMap.subscribe((p: any) => {
+    //   this.courseId = p.get('courseId');
+    //   this.courseService.findById(this.courseId).subscribe(
+    //     (res: any) => {
+    //       this.lessons = res.lessons;
+    //     }
+    //   )
+    // }
+  //  )
+   this.getAllLessonOfCourse((data: Lesson[]) => {
+      this.lessons = data;
+      console.log(this.lessons);
+    })
+  }
+
+  // Fake lessons data
+  getAllLessonOfCourse(cb: (i: Lesson[]) => void) {
+    const req = new XMLHttpRequest();
+    req.open('GET', '../../../../assets/data/fake-lesson.json');
+    req.onload = () => {
+      const data = JSON.parse(req.response);
+      cb(data.data);
+    };
+    req.send();
+  }
 }

@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 
 // Custom elements below
 import { HomeComponent } from './pages/home/home.component';
-import { InstructorProfilComponent } from './pages/instructor/instructor-profil/instructor-profil.component';
 import { PagesLayoutComponent } from './layout/pages-layout/pages-layout.component';
+import { TeamComponent } from './pages/team/team.component';
 
 export const routes: Routes = [
   // Authentification page
@@ -19,6 +19,8 @@ export const routes: Routes = [
     children: [
       // Home Page
       { path: '', component: HomeComponent, title: 'LearnXcel | Home' },
+      { path: 'team', component: TeamComponent, title: 'LearnXcel | Team' },
+
       // courses pages
       {
         path: 'courses',
@@ -34,7 +36,7 @@ export const routes: Routes = [
 
       // Instructors Pages
       {
-        path: 'instructors',
+        path: 'instructor',
         loadChildren: () =>
           import('./pages/instructor/instructor.routes').then(
             (m) => m.INSTRUCTOR_ROUTES

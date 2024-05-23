@@ -1,9 +1,7 @@
 import { Course } from "./course";
+import { User } from "./user";
 
-export interface Instructor {
-  id: number;
-  firstName: String;
-  lastName: String;
+export interface Instructor extends User {
   courses: Course[];
   // More
 }

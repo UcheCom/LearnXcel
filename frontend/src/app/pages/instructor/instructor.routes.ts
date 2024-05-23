@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-import { InstructorProfilComponent } from './instructor-profil/instructor-profil.component';
+import { InstructorProfileComponent } from './instructor-profile/instructor-profile.component';
+import { InstructorDashboardComponent } from './instructor-dashboard/instructor-dashboard.component';
 
 export const INSTRUCTOR_ROUTES: Routes = [
-  { path: 'profil', component: InstructorProfilComponent },
+  { path: 'profile', component: InstructorProfileComponent },
+  { path: 'dashboard', component: InstructorDashboardComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 
 ];
