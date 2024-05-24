@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input,  } from '@angular/core';
 
 // Cutom component imports below
 import { DashHeaderComponent } from './dash-header/dash-header.component';
@@ -27,7 +27,9 @@ import { DashStatisticsComponent } from './dash-statistics/dash-statistics.compo
   styleUrl: './dashboard-layout.component.scss',
 })
 export class DashboardLayoutComponent {
-  charts: boolean = false;
+  @Input() charts: boolean = false;
+  
+  
   isStudent: boolean = false;
   isInstructor: boolean = true;
   isAdmin: boolean = false;

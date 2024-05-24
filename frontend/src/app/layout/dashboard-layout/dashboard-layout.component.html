@@ -1,5 +1,6 @@
 <!-- dashboardarea__area__start  -->
 <div class="dashboardarea sp_bottom_100">
+
   <!-- dashboardarea__ header__area -->
   <app-dash-header></app-dash-header>
   <!-- End dashboardarea__ header__area -->
@@ -13,27 +14,28 @@
             <div class="dashboard__nav__title">
               <h6>Welcome, Alain Gouba</h6>
             </div>
+
             <!-- Dash nav area -->
             <app-dash-nav></app-dash-nav>
             <!-- End Dash nav area -->
-
 
           </div>
         </div>
 
         <div class="col-xl-9 col-lg-9 col-md-12">
           <div class="dashboard__content__wraper">
+            
             <!-- dashboard__ statistics area -->
             <app-dash-statistics></app-dash-statistics>
             <!-- End dashboard__ statistics area -->
 
             @if (charts) {
-              <!-- Chats area -->
-              <app-dash-charts></app-dash-charts>
-              <!-- End Chats area -->
-          }           
+            <!-- Chats area -->
+            <app-dash-charts></app-dash-charts>
+            <!-- End Chats area -->
+            }
 
-
+            @if (isAdmin) {
             <div class="row">
               <!-- popular instructor area -->
               <div class="col-xl-6 col-lg-12 col-md-12 col-12">
@@ -47,6 +49,7 @@
               </div>
               <!-- End recent course -->
             </div>
+            }
 
             <!-- Feedback area -->
             <app-dash-feddback></app-dash-feddback>

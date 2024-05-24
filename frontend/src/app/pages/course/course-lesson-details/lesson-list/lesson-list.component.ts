@@ -35,7 +35,6 @@ export class LessonListComponent implements OnInit {
   //  )
    this.getAllLessonOfCourse((data: Lesson[]) => {
       this.lessons = data;
-      console.log(this.lessons);
     })
   }
 

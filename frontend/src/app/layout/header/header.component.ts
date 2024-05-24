@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 // Custom Routes
 import { StaticRoutes } from '../../core/routes/static.routes';
@@ -14,10 +14,10 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   staticRoutes: StaticRoutes = new StaticRoutes(); 
-  isStudent: boolean = false;
-  isInstructor: boolean = true;
-  isAdmin: boolean = false;
-  isLogged: boolean = true;
+  @Input() isStudent: boolean = false;
+  @Input() isInstructor: boolean = true;
+  @Input() isAdmin: boolean = false;
+  @Input() isLogged: boolean = true;
 
   access_learnxcel_level = sessionStorage.getItem('learnxcel_access_level');
 

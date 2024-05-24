@@ -1,13 +1,22 @@
+import { HttpHeaders } from "@angular/common/http";
+
 export class StaticRoutes {
   private basePath: string = '';  
   private auth: string = `${this.basePath}/authentification`;
   private admin: string = `${this.basePath}/owner/admin`;
   private instructor: string = `${this.basePath}/instructor`;
   private student: string = `${this.basePath}/student`;
-  
+
+  // production?: boolean = false;
+  // LEARNXCEL_API_URL: string = 'http://{HOST}:{PORT}/{ROUTE_BASE}';
+  // headers: HttpHeaders = new HttpHeaders({
+  //   Authorization: 'Bearer ' + sessionStorage.getItem('learnxcel_access_tk'),
+  // });
+
   // GLOBAL ROUTES
   HOME: string = `${this.basePath}`;
   COURSES: string = `${this.basePath}/courses`;
+  COURSES_NEW: string = `${this.basePath}/courses/new`;
   QUIZ: string = `${this.basePath}/quiz`;
   TEAM: string = `${this.basePath}/team`;
   CONTACT: string = `${this.basePath}/contact`;
