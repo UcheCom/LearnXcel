@@ -102,3 +102,70 @@ DevOps Practices: Familiarize yourself with DevOps principles and practices, inc
 **Delete Lesson**
 * DELETE /lessons/:lesson_id
     * Deletes a specific lesson.
+
+### Quiz Endpoints
+**Get All Quizzes for a Lesson**
+* GET /lessons/:lesson_id/quizzes
+    * Retrieves a list of all quizzes for a specific lesson.
+
+**Get Quiz Information**
+* GET /quizzes/:quiz_id
+    * Retrieves information about a specific quiz.
+
+**Create a New Quiz**
+* POST /quizzes
+    * Creates a new quiz with provided information.
+
+**Update Quiz Information**
+* PUT /quizzes/:quiz_id
+    * Updates information for a specific quiz.
+
+**Delete Quiz**
+* DELETE /quizzes/:quiz_id
+    * Deletes a specific quiz.
+
+### Question Endpoints
+**Get All the Questions for a Quiz**
+* GET /quizzes/:quiz_id/questions
+    * Retrieves a list of all questions for a specific quiz.
+
+**Get Question Information**
+* GET /questions/:question_id
+    * Retrieves information about a specific question.
+
+**Create a New Question**
+* POST /questions
+    * Creates a new question with the provided information.
+
+**Update Question Information**
+* PUT /questions/:question_id
+    * Updates information for a specific question.
+
+**Delete Question**
+* DELETE /questions/:question_id
+    * Deletes a specific question.
+
+### Option Endpoints
+**Get All Options for a Question**
+* GET /questions/:question_id/options
+    * Retrieves a list of all options for a specific question.
+**Get Option Information**
+* GET /options/:option_id
+    * Retrieves information about a specific option.
+**Create a New Option**
+* POST /options
+    * Creates a new option with the provided information.
+**Update Option Information**
+* PUT /options/:option_id
+    * Updates information for a specific option.
+**Delete Option**
+* DELETE /options/:option_id
+    * Deletes a specific option.
+
+### User Progress Endpoints
+**Get User Progress for a Course**
+* GET /users/:user_id/courses/:course_id/progress
+    * Retrieves progress information for a specific user in a specific course.
+**Update User Progress**
+* PUT /users/:user_id/progress/:progress_id
+    * Updates progress information for a specific user.
