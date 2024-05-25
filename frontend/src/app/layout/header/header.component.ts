@@ -14,8 +14,8 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   staticRoutes: StaticRoutes = new StaticRoutes(); 
-  @Input() isStudent: boolean = false;
-  @Input() isInstructor: boolean = true;
+  @Input() isStudent: boolean = true;
+  @Input() isInstructor: boolean = false;
   @Input() isAdmin: boolean = false;
   @Input() isLogged: boolean = true;
 

@@ -14,6 +14,8 @@ export class StaticRoutes {
   QUIZ: string = `${this.basePath}/quiz`;
   TEAM: string = `${this.basePath}/team`;
   CONTACT: string = `${this.basePath}/contact`;
+  BECOME_AN_INSTRUCTOR: string = `${this.basePath}/publics/become-an-instructor`;
+  BECOME_A_STUDENT: string = `${this.basePath}/publics/become-a-student`;
   
   // AUTH ROUTES
   AUTH: string = `${this.auth}`;

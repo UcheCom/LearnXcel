@@ -12767,3 +12767,5 @@ Dark Mode
 .is_dark .dashboard__table table thead {
   background: var(--whiteColor);
 }/*# sourceMappingURL=style.css.map */
+
+@import './vendor/toast.css';

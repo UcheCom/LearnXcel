@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { PagesLayoutComponent } from './layout/pages-layout/pages-layout.component';
 import { TeamComponent } from './pages/team/team.component';
+import { NewInstructorComponent } from './pages/instructor/new-instructor/new-instructor.component';
 
 export const routes: Routes = [
   // Authentification page
@@ -17,9 +18,10 @@ export const routes: Routes = [
     path: '',
     component: PagesLayoutComponent,
     children: [
-      // Home Page
+      // Public Pages
       { path: '', component: HomeComponent, title: 'LearnXcel | Home' },
       { path: 'team', component: TeamComponent, title: 'LearnXcel | Team' },
+      { path: 'publics/become-an-instructor', component: NewInstructorComponent, title: 'LearnXcel | Become An Instructor' },
 
       // courses pages
       {

@@ -53,15 +53,15 @@
                   </a>
                 </li>
                 <li class="mega__menu position-static">
-                  <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.QUIZ }}"
+                  <a class="headerarea__has__dropdown" href="#qui-challenges"
                     routerLinkActive="active">Quiz
                   </a>
                 </li>
-                <li class="mega__menu position-static">
+                <!-- <li class="mega__menu position-static">
                   <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.TEAM }}"
                     routerLinkActive="active">Team
                   </a>
-                </li>
+                </li> -->
                 <li class="mega__menu position-static">
                   <a class="headerarea__has__dropdown" [attr.href]="'{{ staticRoutes.HOME }}#footer-contact'"
                     routerLinkActive="active">Contact
@@ -77,7 +77,7 @@
               <a [routerLink]="staticRoutes.AUTH"><i class="icofont-user-alt-5"></i></a>
             </div>
             <div class="headerarea__button">
-              <a href="#" [attr.href]="'{{staticRoutes.HOME}}#populer-subjects'">Get Start</a>
+              <a href="#" [routerLink]="staticRoutes.AUTH">Get Start</a>
             </div>
           </div>
         </div>
@@ -148,21 +148,107 @@
             @if (isInstructor) {
             <ng-container>
               <li class="menu-item-has-children">
-                <a href="#"> My Dashboard</a>
+                <a href="javascript:void(0)"> My Dashboard</a>
                 <ul class="dropdown">
-                  <li><a href="dashboard/instructor-dashboard">Inst. Dashboard</a></li>
-                  <li><a href="dashboard/instructor-profile">Inst. Profile</a></li>
-                  <li><a href="dashboard/instructor-message">Message</a></li>
-                  <li><a href="dashboard/instructor-reviews">Review</a></li>
-                  <li><a href="dashboard/instructor-my-quiz-attempts">My Quiz</a></li>
-                  <li><a href="dashboard/instructor-order-history">Order History</a></li>
-                  <li><a href="dashboard/instructor-course">My Courses</a></li>
-                  <li><a href="dashboard/instructor-announcments">Announcements</a></li>
-                  <li><a href="dashboard/instructor-quiz-attempts">Quiz Attempts</a></li>
-                  <li><a href="dashboard/instructor-assignments">Assignment</a></li>
-                  <li><a href="dashboard/instructor-settings">Settings</a></li>
+                  <li>
+                    <a [routerLink]="staticRoutes.INSTRUCTOR_DASHBOARD" routerLinkActive="active">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-home">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                      Dashboard</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="staticRoutes.INSTRUCTOR_PROFILE" routerLinkActive="active">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-user">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                      My Profile</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="staticRoutes.INSTRUCTOR_FAVORITES" routerLinkActive="active">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-bookmark">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      Favorites</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="staticRoutes.INSTRUCTOR_REVIEW" routerLinkActive="active">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-star">
+                        <polygon
+                          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                      </svg>
+                      Reviews</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="staticRoutes.INSTRUCTOR_QUIZ_ATTEMPTS" routerLinkActive="active">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-help-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      My Quiz Attempts</a>
+                  </li>
+                  <div class="dashboard__nav__title mt-40">
+                    <h6>Instructor Special Menu</h6>
+                  </div>
+                  <div class="dashboard__nav">
+                    <ul>
+                      <li>
+                        <a [routerLink]="staticRoutes.INSTRUCTOR_COURSES" routerLinkActive="active">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-monitor">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                          </svg>
+                          My Course</a>
+                      </li>
+                      <li>
+                        <a [routerLink]="staticRoutes.INSTRUCTOR_ASSIGNMENTS" routerLinkActive="active">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-volume-1">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                          </svg>
+                          Assignments</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dashboard__nav__title mt-40">
+                    <h6>Account Settings</h6>
+                  </div>
+                  <div class="dashboard__nav">
+                    <ul>
+                      <li>
+                        <a [routerLink]="staticRoutes.INSTRUCTOR_ACCOUNT_SETTINGS" routerLinkActive="active">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-settings">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                          </svg>
+                          Settings</a>
+                      </li>
+                    </ul>
+                  </div>
                 </ul>
-              </li>
             </ng-container>
             }
 
@@ -194,10 +280,10 @@
               <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.QUIZ }}" routerLinkActive="active">Quiz
               </a>
             </li>
-            <li class="mega__menu position-static">
+            <!-- <li class="mega__menu position-static">
               <a class="headerarea__has__dropdown" routerLink="{{ staticRoutes.TEAM }}" routerLinkActive="active">Team
               </a>
-            </li>
+            </li> -->
             <li class="mega__menu position-static">
               <a class="headerarea__has__dropdown" [attr.href]="'{{ staticRoutes.HOME }}#footer-contact'">Contact
               </a>
@@ -213,16 +299,16 @@
           <ul>
             <li><a [routerLink]="staticRoutes.AUTH">Login</a></li>
             <li><a [routerLink]="staticRoutes.AUTH">/ Create Account</a></li>
-            
+
             <!-- Start When he/she is logged -->
             @if (isLogged) {
-              @if (isAdmin) {
-                <li><a routerLink="{{ staticRoutes.ADMIN_PROFILE }}" routerLinkActive="active">My Profil</a></li>
-              } @else if (isInstructor) {
-                <li><a routerLink="{{ staticRoutes.INSTRUCTOR_PROFILE }}" routerLinkActive="active">My Profil</a></li>
-              } @else if (isStudent) {
-                <li><a routerLink="{{ staticRoutes.STUDENT_PROFILE }}" routerLinkActive="active">My Profil</a></li>
-              }
+            @if (isAdmin) {
+            <li><a routerLink="{{ staticRoutes.ADMIN_PROFILE }}" routerLinkActive="active">My Profil</a></li>
+            } @else if (isInstructor) {
+            <li><a routerLink="{{ staticRoutes.INSTRUCTOR_PROFILE }}" routerLinkActive="active">My Profil</a></li>
+            } @else if (isStudent) {
+            <li><a routerLink="{{ staticRoutes.STUDENT_PROFILE }}" routerLinkActive="active">My Profil</a></li>
+            }
             }
             <!-- End, When he/she is logged -->
 

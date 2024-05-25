@@ -13,7 +13,7 @@ import { DashNavStudentComponent } from './dash-nav-student/dash-nav-student.com
   styleUrl: './dash-nav.component.scss'
 })
 export class DashNavComponent {
-  isStudent: boolean = false;
-  isInstructor: boolean = true;
+  isStudent: boolean = true;
+  isInstructor: boolean = false;
   isAdmin: boolean = false;
 }
