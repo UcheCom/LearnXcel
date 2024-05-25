@@ -2,16 +2,10 @@ import { HttpHeaders } from "@angular/common/http";
 
 export class StaticRoutes {
   private basePath: string = '';  
-  private auth: string = `${this.basePath}/authentification`;
+  private auth: string = `${this.basePath}/auth`;
   private admin: string = `${this.basePath}/owner/admin`;
   private instructor: string = `${this.basePath}/instructor`;
   private student: string = `${this.basePath}/student`;
-
-  // production?: boolean = false;
-  // LEARNXCEL_API_URL: string = 'http://{HOST}:{PORT}/{ROUTE_BASE}';
-  // headers: HttpHeaders = new HttpHeaders({
-  //   Authorization: 'Bearer ' + sessionStorage.getItem('learnxcel_access_tk'),
-  // });
 
   // GLOBAL ROUTES
   HOME: string = `${this.basePath}`;
@@ -23,6 +17,7 @@ export class StaticRoutes {
   
   // AUTH ROUTES
   AUTH: string = `${this.auth}`;
+  AUTH_SIGNIN: string = `${this.auth}/signin`;
 
   // ADMIN ROUTES
   ADMIN_DASHBOARD: string = `${this.admin}/dashboard`;
@@ -30,6 +25,7 @@ export class StaticRoutes {
   ADMIN_COURSES: string = `${this.admin}/courses`;
   ADMIN_REVIEWS: string = `${this.admin}/reviews`;
   ADMIN_SETTINGS: string = `${this.admin}/settings`;
+  ADMIN_ANNOUNCEMENTS: string = `${this.admin}/announcements`;
 
   // INSTRUCTOR ROUTES
   INSTRUCTOR_DASHBOARD: string = `${this.instructor}/dashboard`;
@@ -37,7 +33,10 @@ export class StaticRoutes {
   INSTRUCTOR_COURSES: string = `${this.instructor}/courses`;
   INSTRUCTOR_QUIZ: string = `${this.instructor}/quiz`;
   INSTRUCTOR_REVIEW: string = `${this.instructor}/reviews`;
-  INSTRUCTOR_SETTINGS: string = `${this.instructor}/settings`;
+  INSTRUCTOR_ACCOUNT_SETTINGS: string = `${this.instructor}/account-settings`;
+  INSTRUCTOR_FAVORITES: string = `${this.instructor}/favorites`;
+  INSTRUCTOR_QUIZ_ATTEMPTS: string = `${this.instructor}/quiz-attempts`;
+  INSTRUCTOR_ASSIGNMENTS: string = `${this.instructor}/assignments`;
 
   // STUDENT ROUTES
   STUDENT_DASHBOARD: string = `${this.student}/dashboard`;

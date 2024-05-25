@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input,  } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 // Cutom component imports below
 import { DashHeaderComponent } from './dash-header/dash-header.component';
@@ -21,7 +22,8 @@ import { DashStatisticsComponent } from './dash-statistics/dash-statistics.compo
     DashPopularInstructorComponent,
     DashRecentCourseComponent,
     DashChartsComponent,
-    DashStatisticsComponent
+    DashStatisticsComponent,
+    RouterOutlet
   ],
   templateUrl: './dashboard-layout.component.html',
   styleUrl: './dashboard-layout.component.scss',

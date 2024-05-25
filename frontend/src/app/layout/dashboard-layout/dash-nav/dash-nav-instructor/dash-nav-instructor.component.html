@@ -1,6 +1,6 @@
 <ng-container>
   <li>
-    <a class="active" href="instructor-dashboard">
+    <a [routerLink]="staticRoutes.INSTRUCTOR_DASHBOARD" routerLinkActive="active">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="feather feather-home">
@@ -10,7 +10,7 @@
       Dashboard</a>
   </li>
   <li>
-    <a href="instructor-profile">
+    <a [routerLink]="staticRoutes.INSTRUCTOR_PROFILE" routerLinkActive="active">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="feather feather-user">
@@ -20,17 +20,7 @@
       My Profile</a>
   </li>
   <li>
-    <a href="instructor-message">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="feather feather-book-open">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-      </svg>
-      Message</a><span class="dashboard__label">12</span>
-  </li>
-  <li>
-    <a href="instructor-wishlist">
+    <a [routerLink]="staticRoutes.INSTRUCTOR_FAVORITES" routerLinkActive="active">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="feather feather-bookmark">
@@ -39,7 +29,7 @@
       Favorites</a>
   </li>
   <li>
-    <a href="instructor-reviews">
+    <a [routerLink]="staticRoutes.INSTRUCTOR_REVIEW" routerLinkActive="active">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="feather feather-star">
@@ -50,7 +40,7 @@
       Reviews</a>
   </li>
   <li>
-    <a href="instructor-my-quiz-attempts">
+    <a [routerLink]="staticRoutes.INSTRUCTOR_QUIZ_ATTEMPTS" routerLinkActive="active">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="feather feather-help-circle">
@@ -60,25 +50,13 @@
       </svg>
       My Quiz Attempts</a>
   </li>
-  <li>
-    <a href="instructor-order-history">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="feather feather-shopping-bag">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-      </svg>
-      Order History</a>
-  </li>
-
   <div class="dashboard__nav__title mt-40">
-    <h6>Instructor</h6>
+    <h6>Instructor Special Menu</h6>
   </div>
   <div class="dashboard__nav">
     <ul>
       <li>
-        <a href="instructor-course">
+        <a [routerLink]="staticRoutes.INSTRUCTOR_COURSES" routerLinkActive="active">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-monitor">
@@ -89,26 +67,7 @@
           My Course</a>
       </li>
       <li>
-        <a href="instructor-announcments">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-volume-1">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          </svg>
-          Announcments</a>
-      </li>
-      <li>
-        <a href="instructor-quiz-attempts">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-message-square">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          Quiz Attempt</a>
-      </li>
-      <li>
-        <a href="instructor-assignments">
+        <a [routerLink]="staticRoutes.INSTRUCTOR_ASSIGNMENTS" routerLinkActive="active">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-volume-1">
@@ -117,17 +76,15 @@
           </svg>
           Assignments</a>
       </li>
-
     </ul>
   </div>
   <div class="dashboard__nav__title mt-40">
-    <h6>user</h6>
+    <h6>Account Settings</h6>
   </div>
-
   <div class="dashboard__nav">
     <ul>
       <li>
-        <a href="instructor-settings">
+        <a [routerLink]="staticRoutes.INSTRUCTOR_ACCOUNT_SETTINGS" routerLinkActive="active">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-settings">

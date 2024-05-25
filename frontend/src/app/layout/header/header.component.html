@@ -74,10 +74,10 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="headerarea__right">
             <div class="headerarea__login">
-              <a href="login"><i class="icofont-user-alt-5"></i></a>
+              <a [routerLink]="staticRoutes.AUTH"><i class="icofont-user-alt-5"></i></a>
             </div>
             <div class="headerarea__button">
-              <a href="#">Get Start</a>
+              <a href="#" [attr.href]="'{{staticRoutes.HOME}}#populer-subjects'">Get Start</a>
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@
 
         <nav>
           <ul class="mobile-menu">
-            <li class="menu-item-has-children"><a [attr.href]="'{{ staticRoutes.HOME }}'">Home</a></li>
+            <li class="menu-item-has-children"><a [routerLink]=" staticRoutes.HOME">Home</a></li>
 
             <!-- When he/she is plateform owner -->
             @if (isAdmin) {
@@ -211,8 +211,8 @@
         <a class="mobile-account-active" href="#">My Account <i class="icofont-thin-down"></i></a>
         <div class="lang-curr-dropdown account-dropdown-active">
           <ul>
-            <li><a href="login">Login</a></li>
-            <li><a href="login">/ Create Account</a></li>
+            <li><a [routerLink]="staticRoutes.AUTH">Login</a></li>
+            <li><a [routerLink]="staticRoutes.AUTH">/ Create Account</a></li>
             
             <!-- Start When he/she is logged -->
             @if (isLogged) {
