@@ -8,6 +8,7 @@ import { DashPopularInstructorComponent } from '../../../layout/dashboard-layout
 import { DashRecentCourseComponent } from '../../../layout/dashboard-layout/dash-recent-course/dash-recent-course.component';
 import { DashStatisticsComponent } from '../../../layout/dashboard-layout/dash-statistics/dash-statistics.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { CProfileComponent } from '../../../components/c-profile/c-profile.component';
 
 @Component({
   selector: 'app-instructor-profile',
@@ -20,7 +21,8 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
     DashPopularInstructorComponent,
     DashRecentCourseComponent,
     DashStatisticsComponent,
-    ProfileDetailsComponent
+    ProfileDetailsComponent,
+    CProfileComponent
   ],
   templateUrl: './instructor-profile.component.html',
   styleUrl: './instructor-profile.component.scss'

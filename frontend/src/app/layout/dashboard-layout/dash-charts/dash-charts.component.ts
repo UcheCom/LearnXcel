@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './dash-charts.component.scss'
 })
 export class DashChartsComponent {
-
+  isAdmin: boolean = false;
 }

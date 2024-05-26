@@ -43,9 +43,11 @@ export class StaticRoutes {
   // STUDENT ROUTES
   STUDENT_DASHBOARD: string = `${this.student}/dashboard`;
   STUDENT_PROFILE: string = `${this.student}/profile`;
-  STUDENT_COURSE_LIST: string = `${this.student}/course`;
-  STUDENT_QUIZ: string = `${this.student}/quiz`;
+  STUDENT_COURSES: string = `${this.student}/courses`;
+  STUDENT_FAVORITES: string = `${this.student}/favorites`;
+  STUDENT_QUIZ_ATTEMPTS: string = `${this.student}/quiz-attempts`;
+  STUDENT_ASSIGNMENTS: string = `${this.instructor}/assignments`;
   STUDENT_REVIEW: string = `${this.student}/reviews`;
-  STUDENT_SETTINGS: string = `${this.student}/settings`;
+  STUDENT_ACCOUNT_SETTINGS: string = `${this.student}/account-settings`;
 
 }

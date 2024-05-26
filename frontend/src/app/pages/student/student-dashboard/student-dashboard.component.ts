@@ -13,12 +13,8 @@ import { DashStatisticsComponent } from '../../../layout/dashboard-layout/dash-s
   selector: 'app-student-dashboard',
   standalone: true,
   imports: [
-    DashHeaderComponent,
     DashNavComponent,
     DashFeddbackComponent,
-    DashPopularInstructorComponent,
-    DashRecentCourseComponent,
-    DashChartsComponent,
     DashStatisticsComponent,
   ],
   templateUrl: './student-dashboard.component.html',
