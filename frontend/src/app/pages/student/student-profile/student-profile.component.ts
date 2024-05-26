@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 // Custom elements imports
-import { CProfileComponent } from '../../../components/c-profile/c-profile.component';
+import { CProfileComponent } from '../../../components/c-profile/c-profile/c-profile.component';
 
 @Component({
   selector: 'app-student-profile',

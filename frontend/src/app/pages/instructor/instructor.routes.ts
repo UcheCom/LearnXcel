@@ -10,6 +10,7 @@ import { InstructorReviewsComponent } from './instructor-reviews/instructor-revi
 import { QuizAttemptsComponent } from './instructor-quiz/quiz-attempts/quiz-attempts.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { SettingsComponent } from './settings/settings.component';
+import { InstructorProfileViewDetailsComponent } from './instructor-profile-view-details/instructor-profile-view-details.component';
 
 export const INSTRUCTOR_ROUTES: Routes = [
   {
@@ -28,5 +29,6 @@ export const INSTRUCTOR_ROUTES: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
+  { path: ':instructorId/profile-details', component: InstructorProfileViewDetailsComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
