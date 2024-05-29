@@ -6,6 +6,7 @@ import models
 import inspect
 from os import getenv
 from datetime import datetime
+from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -35,6 +36,11 @@ class BaseModel:
     Special method:
     - __str__(self): Returns a string representation of the BaseModel instance.
     """
+    if models.sqlStorage_t == "db":
+        id = Column(String(60), primary_key=True, default=uuid.uuid4)
+        created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+        updated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
     def __init__(self, *args, **kwargs):
         """
         Initializes a new BaseModel instance.
