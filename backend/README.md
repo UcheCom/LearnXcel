@@ -1,6 +1,6 @@
 # LearnXcel
 
-LearnXcel is a web-based learning management system built using Flask and SQLAlchemy. It supports user authentication, course management, lesson and quiz management, and user progress tracking.
+LearnXcel is a web-based learning management system built using Python, Flask and SQLAlchemy. It supports user authentication, course management, lesson and quiz management, and user progress tracking.
 
 ## Features
 
@@ -33,7 +33,7 @@ LearnXcel is a web-based learning management system built using Flask and SQLAlc
 
 5. **Run the application**:
     ```sh
-    flask run
+    flask run or python3 app.py
     ```
 
 ## API Endpoints
