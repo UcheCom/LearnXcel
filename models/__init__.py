@@ -6,7 +6,7 @@ initialize the models package
 from os import getenv
 import models
 
-sqlStorage_t = getenv("TASK_TYPE_STORAGE")
+sqlStorage_t = getenv("LEARNXCEL_TYPE_STORAGE")
 
 if sqlStorage_t == "db":
     from models.engine.db_storage import DBStorage
