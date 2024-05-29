@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from sqlalchemy.orm import relationship
 from sqlalchemy import Enum as SQLAEnum, ForeignKey, exc
 from datetime import datetime, timedelta
