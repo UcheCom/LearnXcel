@@ -32,6 +32,9 @@ class DBStorage:
         LEARNXCEL_MYSQL_DB = getenv('LEARNXCEL_MYSQL_DB')
         LEARNXCEL_ENV = getenv('LEARN_ENV')
         
+        if not all([LEARNXCEL_MYSQL_USER, LEARNXCEL_MYSQL_PWD, LEARNXCEL_MYSQL_HOST, LEARNXCEL_MYSQL_DB]):
+            raise EnvironmentError("One or more required environment variables are missing.")
+        
         self.__engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.
                                       format(LEARNXCEL_MYSQL_USER,
                                              LEARNXCEL_MYSQL_PWD,
