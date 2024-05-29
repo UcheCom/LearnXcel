@@ -32,7 +32,7 @@ class DBStorage:
         LEARNXCEL_MYSQL_DB = getenv('LEARNXCEL_MYSQL_DB')
         LEARNXCEL_ENV = getenv('LEARN_ENV')
         
-        self.__engine = create_engine('mysql+pysqldb://{}:{}@{}/{}'.
+        self.__engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.
                                       format(LEARNXCEL_MYSQL_USER,
                                              LEARNXCEL_MYSQL_PWD,
                                              LEARNXCEL_MYSQL_HOST,
