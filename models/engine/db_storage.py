@@ -132,4 +132,7 @@ class DBStorage:
         Returns:
             int: The number of objects in storage.
         """
-        return len(self.all(cls))
+        if cls:
+            return self.__session.query(cls).count()
+        else:
+            return sum(self.__session.query(classes[clss]).count() for clss in classes)
