@@ -8,11 +8,9 @@ from os import environ
 from flask_cors import CORS
 from flasgger import Swagger
 from flasgger.utils import swag_from
-from models.user_role import CustomJSONEncoder
 
 
 app = Flask(__name__)
-app.json_encoder = CustomJSONEncoder
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
