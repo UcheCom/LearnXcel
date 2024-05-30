@@ -6,6 +6,7 @@
 from api.v1.views import app_views
 from flask import abort, jsonify, request
 from models.user import User
+from models import storage
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
@@ -14,7 +15,7 @@ def view_all_users() -> str:
     Return:
       - list of all User objects JSON represented
     """
-    all_users = [user.to_json() for user in User.all()]
+    all_users = [user.to_json() for user in storage.all(User)]
     return jsonify(all_users)
 
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
