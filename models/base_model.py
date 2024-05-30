@@ -5,6 +5,7 @@ import uuid
 import models
 import inspect
 from os import getenv
+import enum
 from datetime import datetime
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
@@ -124,6 +125,12 @@ class BaseModel:
         new_dict["__class__"] = self.__class__.__name__
         if "_sa_instance_state" in new_dict:
             del new_dict["_sa_instance_state"]
+        
+        # Convert enum attributes to their string values
+        for key, value in new_dict.items():
+            if isinstance(value, enum.Enum):
+                new_dict[key] = value.value
+
         frame = inspect.currentframe().f_back
         func_name = frame.f_code.co_name
         class_name = ''
