@@ -2,10 +2,9 @@
 """Enumeration class for User roles"""
 
 
-from enum import Enum
-from sqlalchemy import Enum
+import enum
 
-class UserRole(Enum):
+class UserRole(enum.Enum):
     ADMIN = "admin"
     STUDENT = "student"
     INSTRUCTOR = "instructor"
