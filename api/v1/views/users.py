@@ -82,33 +82,36 @@ def create_user() -> str:
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
 
-
-@app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/users/<user_id>', methods=['PUT', 'PATCH'], strict_slashes=False)
 def update_user(user_id: str) -> str:
-    """ PUT /api/v1/users/:id
+    """ Update /api/v1/users/:id
     Path parameter:
       - User ID
-    JSON body:
-      - last_name (optional)
-      - first_name (optional)
     Return:
-      - User object JSON represented
+      - JSON representation of the updated user
       - 404 if the User ID doesn't exist
-      - 400 if can't update the User
     """
     user = storage.get(User, user_id)
 
     if not user:
         abort(404)
-
-    if not request.get_json():
-        abort(400, description="Not a JSON")
-
-    ignore = ['id', 'created_at', 'updated_at']
-
-    data = request.get_json()
-    for key, value in data.items():
-        if key not in ignore:
-            setattr(user, key, value)
+    
+    if request.method == 'PUT':
+        data = request.get_json()
+        user.username = data.get('username', user.username)
+        user.email = data.get('email', user.email)
+        user.first_name = data.get('first_name', user.first_name)
+        user.last_name = data.get('last_name', user.last_name)
+    elif request.method == 'PATCH':
+        data = request.get_json()
+        if 'username' in data:
+            user.username = data['username']
+        if 'email' in data:
+            user.email = data['email']
+        if 'first_name' in data:
+            user.first_name = data['first_name']
+        if 'last_name' in data:
+            user.last_name = data['last_name']
+    
     storage.save()
     return make_response(jsonify(user.to_dict()), 200)
