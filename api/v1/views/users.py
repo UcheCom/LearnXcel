@@ -3,10 +3,10 @@
 """
 
 
+from models import storage
+from models.user import User
 from api.v1.views import app_views
 from flask import abort, jsonify, request,  make_response
-from models.user import User
-from models import storage
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
@@ -22,7 +22,7 @@ def get_users() -> str:
     return jsonify(list_users)
 
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
-def get_user(user_id: str = None) -> str:
+def get_user(user_id: str) -> str:
     """ GET /api/v1/users/:id
     Path parameter:
       - User ID
@@ -37,7 +37,7 @@ def get_user(user_id: str = None) -> str:
     return jsonify(user.to_dict())
 
 @app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
-def delete_user(user_id: str = None) -> str:
+def delete_user(user_id: str) -> str:
     """ DELETE /api/v1/users/:id
     Path parameter:
       - User ID
@@ -84,7 +84,7 @@ def create_user() -> str:
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
-def update_user(user_id: str = None) -> str:
+def update_user(user_id: str) -> str:
     """ PUT /api/v1/users/:id
     Path parameter:
       - User ID
