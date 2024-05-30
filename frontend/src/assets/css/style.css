@@ -1,12 +1,9 @@
 /*********************************************************************************
 
-    Description: leranXcel, online course, quiz bootstrap 5.0.
+	Description: leranXcel, online course, quiz bootstrap 5.0.
     Version: 1.0.0
 
 **********************************************************************************/
-
-
-/*******************************************************************************************************/
 /**************************************************************
 
 	Start Style sheet Indexing
@@ -4716,6 +4713,7 @@ Grid Area
 .gridarea__wraper .gridarea__img img {
   width: 100%;
   border-radius: var(--borderRadius);
+  height: max-content;
 }
 .gridarea__wraper .gridarea__img .gridarea__small__button {
   position: absolute;
@@ -9489,7 +9487,8 @@ Error
 .loginarea__wraper form .login__button {
   margin-top: 25px;
 }
-.loginarea__wraper form .login__button a {
+.loginarea__wraper form .login__button a,
+.loginarea__wraper form .login__button button {
   width: 100%;
 }
 .loginarea__wraper .login__social__option {
@@ -11403,6 +11402,16 @@ Breadcrumb Area
 .create__course__bottom__button {
   margin-top: 20px;
 }
+.cancel__button a {
+  background: var(--deepred);
+  color: var(--whiteColor);
+  display: inline-block;
+  text-align: center;
+  padding: 13px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 1.2rem;
+}
 .create__course__bottom__button a {
   background: var(--primaryColor);
   color: var(--whiteColor);
@@ -11413,7 +11422,7 @@ Breadcrumb Area
   border-radius: 6px;
 }
 .create__course__bottom__button a:hover {
-  background: var(--secondaryColor);
+  background: var(--skycolor);
   color: var(--whiteColor);
 }
 .create__course__wraper {

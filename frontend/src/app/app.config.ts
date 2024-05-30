@@ -7,5 +7,5 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })), provideAnimationsAsync(), provideHttpClient(), provideToastr()]
+  providers: [provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })), provideAnimationsAsync(), provideHttpClient(), provideToastr(), provideAnimationsAsync()]
 };

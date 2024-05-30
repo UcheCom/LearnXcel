@@ -4,6 +4,8 @@ export interface User extends Auth {
   id: number;
   firstName: string;
   lastName: string;
+  displayName: string;
+  username: string;
   phoneNumber: string;
   imageUrl: string;
   registeredAt: string;
@@ -14,5 +16,5 @@ export interface User extends Auth {
 export interface Auth {
   email: string;
   password: string;
-  token: string;
+  token?: string;
 }

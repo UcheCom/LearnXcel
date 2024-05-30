@@ -22,7 +22,7 @@ export class AuthService {
    */
   login(userData: any) {
     return this.http
-      .post(`${this.API_URL}/login`, userData, {
+      .post(`${this.API_URL}/signin`, userData, {
         headers: this.staticEnv.headers,
       })
       .pipe(
@@ -38,9 +38,22 @@ export class AuthService {
    * @param userData
    * @returns
    */
-  register(userData: any) {
+  registerStudent(userData: any) {
     return this.http
-      .post(`${this.API_URL}/register`, userData, {
+      .post(`${this.API_URL}/signup/student`, userData, {
+        headers: this.staticEnv.headers,
+      })
+      .pipe(
+        catchError((error: any) => {
+          console.error('Regitration failed:', error);
+          throw error;
+        })
+      );
+  }
+
+  registerInstructor(userData: any) {
+    return this.http
+      .post(`${this.API_URL}/signup/instructor`, userData, {
         headers: this.staticEnv.headers,
       })
       .pipe(

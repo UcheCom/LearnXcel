@@ -16,7 +16,7 @@ export class CourseService {
   COURSE_URL =  this.staticEnv.LEARNXCEL_API_URL + '/courses';
 
   getAllCourses(): Observable<Course> {
-    return this.http.get<Course>(`${this.COURSE_URL}/courses}`, { headers: this.staticEnv.headers });
+    return this.http.get<Course>(`${this.COURSE_URL}`, { headers: this.staticEnv.headers });
   }
 
   getCourseById(courseId: number): Observable<Course> {
@@ -25,8 +25,8 @@ export class CourseService {
 
   /**
    * getAllLessonOfCourseByCourseId - get all lessons of a course
-   * @param courseId 
-   * @returns 
+   * @param courseId
+   * @returns
    */
   getAllLessonOfCourseByCourseId(courseId: number): Observable<Lesson> {
     return this.http.get<Lesson>(`${this.COURSE_URL}/${courseId}/lessons`, { headers: this.staticEnv.headers });
@@ -34,16 +34,16 @@ export class CourseService {
 
   /**
    * Update Lesson Information
-   * @param lessonId 
-   * @returns 
+   * @param lessonId
+   * @returns
    */
   updateLessonOfCourse(lessonId: number): Observable<any> {
     return this.http.put<any>(`${this.staticEnv.LEARNXCEL_API_URL}/lessons/${lessonId}`, { headers: this.staticEnv.headers });
   }
   /**
    * createCourse - create new course
-   * @param course 
-   * @returns 
+   * @param course
+   * @returns
    */
   createCourse(course: Course): Observable<Course> {
     return this.http.post<Course>(`${this.COURSE_URL}`, course, { headers: this.staticEnv.headers });
@@ -51,17 +51,21 @@ export class CourseService {
 
   /**
    * updateCourse - update course
-   * @param course 
-   * @returns 
+   * @param course
+   * @returns
    */
   updateCourse(course: Course): Observable<Course> {
-    return this.http.put<Course>(`${this.COURSE_URL}/${course.id}`, course, { headers: this.staticEnv.headers });
+    return this.http.put<Course>(`${this.COURSE_URL}/${course.courseId}`, course, { headers: this.staticEnv.headers });
+  }
+
+  updateCourseWithCourseId(course: Course, courseId: number): Observable<Course> {
+    return this.http.put<Course>(`${this.COURSE_URL}/${courseId}`, course, { headers: this.staticEnv.headers });
   }
 
   /**
    * deleteCourseById - delete course
-   * @param courseId 
-   * @returns 
+   * @param courseId
+   * @returns
    */
   deleteCourseById(courseId: number): Observable<any> {
     return this.http.delete<any>(`${this.COURSE_URL}/${courseId}`, { headers: this.staticEnv.headers });
@@ -69,8 +73,8 @@ export class CourseService {
 
   /**
    * deleteLessonById - Delete Lesson
-   * @param lessonId 
-   * @returns 
+   * @param lessonId
+   * @returns
    */
   deleteLessonById(lessonId: number): Observable<any> {
     return this.http.delete<any>(`${this.staticEnv.LEARNXCEL_API_URL}/lessons/${lessonId}`, { headers: this.staticEnv.headers });

@@ -6,14 +6,15 @@
           data-bs-target="#registerModal">Sign up for free</a></p>
     </div>
 
-    <form action="#">
+    {{ form.value | json }}
+    <form [formGroup]="form">
       <div class="login__form">
         <label class="form__label">Username or email</label>
-        <input class="common__login__input" type="text" placeholder="Your username or email">
+        <input class="common__login__input" type="text" placeholder="Your username or email" formControlName="email" formControlName="email" [(ngModel)]="loginModel.email">
       </div>
       <div class="login__form">
         <label class="form__label">Password</label>
-        <input class="common__login__input" type="password" placeholder="Password">
+        <input class="common__login__input" type="password" placeholder="Password" formControlName="password" [(ngModel)]="loginModel.password">
       </div>
       <div class="login__form d-flex justify-content-between flex-wrap gap-2">
         <div class="form__check">
@@ -21,11 +22,21 @@
           <label for="forgot"> Remember me</label>
         </div>
         <div class="text-end login__form__link">
-          <a href="#">Forgot your password?</a>
+          <a href="javascript:void(0)">Forgot your password?</a>
         </div>
       </div>
-      <div class="login__button">
-        <a class="default__button" href="#">Log In</a>
+      <div class="my-8 text-center login__button">
+        <button
+          type="submit"
+          class="default__button"
+          (click)="submit()"
+          [disabled]="isRequesting"
+        >
+          Sign In
+          <div *ngIf="isRequesting" class="spinner-grow text-green ml-4 float-end" color="green" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </button>
       </div>
     </form>
   </div>

@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 
 // Cutsom elements imports
 import { StaticRoutes } from '../../../core/routes/static.routes';
 import { CourseService } from '../../../core/services/index.services';
 import { Course } from '../../../core/models/index.models';
+import { DurationPipe } from '../../../core/pipes/index.pipe';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    DurationPipe
+  ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.scss',
 })
@@ -22,20 +27,15 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
-    this.getAllCourses((data: Course[]) => {
-      this.courses = data;
-    });
+    this.getAllCourses();
   }
 
 
-  // Retrive all courses (fake)
-  getAllCourses(cb: (i: Course[]) => void) {
-    const req = new XMLHttpRequest();
-    req.open('GET', '../../../../assets/data/fake-course.json');
-    req.onload = () => {
-      const data = JSON.parse(req.response);
-      cb(data.data);
-    };
-    req.send();
+  // Retrive all courses)
+  getAllCourses() {
+    this.courseService.getAllCourses().subscribe((courses: any) => {
+      this.courses = courses.data;
+      console.log(this.courses);
+    });
   }
 }

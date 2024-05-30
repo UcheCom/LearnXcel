@@ -2,23 +2,29 @@ import { CourseCategory } from "./course-category";
 import { Instructor } from "./instructor";
 import { Lesson } from "./lesson";
 import { Review } from "./review";
+import { Tag } from "./tag";
 
 export interface Course {
-  id: number;
-  title: string;
+  courseId: number;
+  courseName: String;
+  description: string;
+  imageUrl: string;
+  videoIntroUrl: string;
+  langage: string;
+  startDate: Date;
+  requirements: string;
   lessons: Lesson[];
   instructors: Instructor[];
-  material: string;
-  summerQuiz: string;
   category: CourseCategory;
-  reviews: Review;
+  tags: Tag[];
+
   level: number;
   status: string;
-  duration: number;
   rating: number;
   enrolled: number;
   totalStudent: number;
-  tags: string[];
-  // More
-
+  duration: string;
+  summerQuiz: string;
+  material: string;
+  reviews: Review;
 }

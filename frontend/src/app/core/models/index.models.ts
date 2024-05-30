@@ -7,3 +7,5 @@ export { Review } from "./review";
 export { User, Auth } from "./user";
 export { Role } from "./role";
 export { Answer } from "./answer";
+export { Tag } from "./tag";
+export { Question } from "./question";

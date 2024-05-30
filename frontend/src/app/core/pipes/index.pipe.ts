@@ -1,3 +1,1 @@
-export class Test {
-  private id?: string;
-}
+export * from './duration.pipe';

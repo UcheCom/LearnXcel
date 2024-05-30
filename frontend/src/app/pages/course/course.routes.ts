@@ -8,12 +8,14 @@ import { StaticRoutes } from '../../core/routes/static.routes';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseLessonDetailsComponent } from './course-lesson-details/course-lesson-details.component';
 import { QuizSummaryComponent } from './course-lesson-details/quiz-summary/quiz-summary.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 export const COURSE_ROUTES: Routes = [
   { path: '', component: CourseListComponent },
   { path: ':courseId/details', component: CourseDetailsComponent, title: 'LearnXcel | Course Details' },
   { path: ':courseId/details/lessons', component: CourseLessonDetailsComponent, title: 'LearnXcel | Lesson Details' },
   { path: ':courseId/details/lessons/:lessonId/quiz', component: QuizSummaryComponent, title: 'LearnXcel | Quiz Details' },
+  { path: 'new', component: AddCourseComponent, title: 'LearnXcel | New Course' },
 
   // Not yet used
   { path: 'list-by-category', component: CourseListByCategoryComponent },
