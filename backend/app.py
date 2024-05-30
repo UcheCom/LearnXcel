@@ -6,8 +6,8 @@ from sqlalchemy import Enum as SQLAEnum, ForeignKey, exc
 from datetime import datetime, timedelta
 import jwt
 import enum
-from werkzeug.security import generate_password_hash, check_password_hash
-from api.v1.views import app_views
+from werkzeug.security import generate_password_hash, check_password_hash 
+# from api.v1.views import app_views
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password123@localhost/learnxcel'
