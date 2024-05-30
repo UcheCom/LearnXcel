@@ -5,6 +5,7 @@
 
 from flask import jsonify, abort
 from api.v1.views import app_views
+from models import storage
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
@@ -23,7 +24,7 @@ def stats() -> str:
     """
     from models.user import User
     stats = {}
-    stats['users'] = User.count()
+    stats['users'] = storage.count(User)
     return jsonify(stats)
 
 @app_views.route('/unauthorized/', methods=['GET'], strict_slashes=False)
