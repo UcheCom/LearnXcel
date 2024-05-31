@@ -1,0 +1,123 @@
+<!-- course__section__start   -->
+<div class="coursearea sp_top_100 sp_bottom_100">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="course__text__wraper" data-aos="fade-up">
+          <div class="course__text">
+            <p>Showing
+              @if (courses.length <= 12 ) {
+                1–{{courses.length}} of {{courses.length}} Results
+              } @else {
+                <span></span>  of {{courses.length}} Results
+              }
+            </p>
+          </div>
+          <div class="course__icon">
+            <ul class="nav property__team__tap" id="myTab" role="tablist">
+              <li class="short__by__new">
+                <select class="form-select" aria-label="Default select example">
+                  <option> Short by New</option>
+                  <option value="1">Short by Date</option>
+                  <option value="2" selected>Most Following</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-12">
+        <div class="tab-content tab__content__wrapper" id="myTabContent">
+          <div class="tab-pane fade  active show" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
+            <div class="row">
+              @for (course of courses; track course.courseId) {
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up">
+                <div class="gridarea__wraper gridarea__wraper__2" routerLink="{{staticRoutes.COURSES}}/{{course.courseId}}/details"
+                  RouterLinkActive="active">
+                  <div class="gridarea__img">
+                    <a>
+                      @if (course.imageUrl == null) {
+                        <img loading="lazy" src="assets/img/education/defaultCourse.png" alt=" LeanXcel - {{course.courseName}}" style="height: max(115px, 100px);">
+                      } @else {
+                        <img loading="lazy" [src]="course.imageUrl" alt="grid">
+                      }
+                    </a>
+                    <div class="gridarea__small__button">
+                      <div class="grid__badge">{{course.category.name }}
+                      </div>
+                    </div>
+                    <div class="gridarea__small__icon">
+                      <a><i class="icofont-heart-alt"></i></a>
+                    </div>
+                  </div>
+                  <div class="gridarea__content">
+                    <div class="gridarea__list">
+                      <ul>
+                        <li>
+                          <i class="icofont-book-alt"></i>
+                          {{ course.lessons.length > 1 ? course.lessons.length + ' Lessons':  course.lessons.length + ' Lesson' }}
+                        </li>
+                        <li>
+                          <i class="icofont-clock-time"></i> {{ course.duration | duration }}
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="gridarea__heading">
+                      <h3><a href="javascript:void(0)">{{course.courseName}}</a></h3>
+                    </div>
+
+                    <div class="gridarea__bottom">
+                      <a href="javascript:void(0)">
+                        <div class="gridarea__small__img">
+                          <img loading="lazy" src="assets/img/teacher/default_user.png" alt="grid">
+                          @for (instructor of course.instructors.slice(-1); track instructor.id) {
+
+                            @if (course.instructors.length <= 1) {
+                              <div class="gridarea__small__content">
+                                <h6 style="margin-left: -.77rem;">{{instructor.displayName}} </h6>
+                              </div>
+                            } @else {
+
+                          <div class="gridarea__small__content">
+                            <span style="margin-left: -1.2rem; margin-top: -.8rem">{{course.instructors.length > 1 ? '+' + (course.instructors.length - 1) : '' }}</span>
+                            <h6 style="margin-top: -.85rem;">{{instructor.displayName}} </h6>
+                          </div>
+                        }
+
+                        }
+                        </div>
+                    </a>
+
+                      <!-- <div class="gridarea__star">
+                        <i class="icofont-star"></i>
+                        <i class="icofont-star"></i>
+                        <i class="icofont-star"></i>
+                        <i class="icofont-star"></i>
+                        <span>(44)</span>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @if (courses.length > 12 ) {
+      <div class="main__pagination__wrapper" data-aos="fade-up">
+        <ul class="main__page__pagination">
+          <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
+          <li><a class="active" href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#"><i class="icofont-double-right"></i></a></li>
+        </ul>
+      </div>
+    }
+    </div>
+  </div>
+</div>
