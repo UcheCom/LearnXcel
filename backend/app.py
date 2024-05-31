@@ -10,7 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # # from api.v1.views import app_views
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://zahira:qwerty@localhost/Learnxcel'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://username:password@localhost/databasename'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '6e3fa2a3753c66e433ca479ccae1f4af'
 db = SQLAlchemy(app)
