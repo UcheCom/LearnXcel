@@ -18,5 +18,5 @@ export class DashHeaderComponent {
   @Input() starRating: number = 0;
   @Input() reviewsCount: number = 0;
   @Input() createCourseLink: string = 'create-course';
-  isInstructor: boolean = true;
+  isInstructor: boolean = false;
 }

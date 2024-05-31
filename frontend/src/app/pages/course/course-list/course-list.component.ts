@@ -23,8 +23,11 @@ import { DurationPipe } from '../../../core/pipes/index.pipe';
 export class CourseListComponent implements OnInit {
   staticRoutes: StaticRoutes = new StaticRoutes();
   courses: Course[] = [];
+  currentUser!: any;
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService) {
+    this.currentUser = sessionStorage.getItem('learnxcel_access_tk');
+  }
 
   ngOnInit(): void {
     this.getAllCourses();
@@ -35,7 +38,6 @@ export class CourseListComponent implements OnInit {
   getAllCourses() {
     this.courseService.getAllCourses().subscribe((courses: any) => {
       this.courses = courses.data;
-      console.log(this.courses);
     });
   }
 }

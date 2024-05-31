@@ -77,8 +77,8 @@ export class LoginComponent {
       // () => {
       const userRoles = res.user.roles[0];
 
-      sessionStorage.setItem('userRoles', userRoles);
-      sessionStorage.setItem('token', res.accessToken);
+      sessionStorage.setItem('s-learn-xcel-r', userRoles);
+      sessionStorage.setItem('learnxcel_access_tk', res.accessToken);
 
       const rolesName = res.user.roles.map((role: any) => role.name);
       const rolesId = res.user.roles.map((role: any) => role.id);
@@ -87,7 +87,7 @@ export class LoginComponent {
       const array1 = Math.floor(Math.random() * 999999999999999);
       const array2 = Math.floor(Math.random() * 999999999999999);
 
-      sessionStorage.setItem('s-learn-xcel-r', array1 + rolesId + array2);
+      sessionStorage.setItem('fy-embr-learn-xcel-r', array1 + rolesId + array2);
       sessionStorage.setItem('response', res.status);
       this.isLoggedIn = true;
       sessionStorage.setItem('fuckYou', 'true');
@@ -143,7 +143,7 @@ export class LoginComponent {
   }
 
   /**
-   * badCredentials : Message en cas d'identifiants incorrects
+   * badCredentials : Message for bad credentials
    * @return Nothing
    */
   badCredentials() {
@@ -151,7 +151,7 @@ export class LoginComponent {
       icon: 'error',
       title: 'Oops... !',
       timer: 3000,
-      text: 'Identifiants incorrects !',
+      text: 'Bad credentials !',
     });
   }
 
@@ -170,7 +170,7 @@ export class LoginComponent {
 
     Toast.fire({
       icon: 'success',
-      title: `Content de vous revoir 🖐🏽 ${username}`,
+      title: `Welcome back 🖐🏽 ${username}`,
       timer: 5000,
     });
   }

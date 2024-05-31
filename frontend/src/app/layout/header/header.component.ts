@@ -1,43 +1,60 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 // Custom Routes
 import { StaticRoutes } from '../../core/routes/static.routes';
-import { RouterModule } from '@angular/router';
+import { User } from '../../core/models/index.models';
+import { UsersService } from '../../core/services/index.services';
+import { AuthService } from '../../auth/service/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  staticRoutes: StaticRoutes = new StaticRoutes(); 
-  @Input() isStudent: boolean = true;
-  @Input() isInstructor: boolean = false;
-  @Input() isAdmin: boolean = false;
-  @Input() isLogged: boolean = true;
+  staticRoutes: StaticRoutes = new StaticRoutes();
+  accesToken: string | null;
+  cUR: string | null;
+  currentUser: any;
+  isLogged: boolean = false;
+  isStudent: boolean = false;
+  isInstructor: boolean = false;
+  isAdmin: boolean = false;
 
-  access_learnxcel_level = sessionStorage.getItem('learnxcel_access_level');
+  constructor(private userService: UsersService,
+    private authService: AuthService
+  ) {
+    this.accesToken = sessionStorage.getItem('learnxcel_access_tk');
+    this.cUR = sessionStorage.getItem('s-learn-xcel-r');
 
-  constructor() { 
-    if (this.access_learnxcel_level == "student" || this.access_learnxcel_level == "STUDENT") {
-      this.isStudent = true;
-      this.isInstructor = false;
-      this.isAdmin = false;
-    } else if (this.access_learnxcel_level == "instructor" || this.access_learnxcel_level == "INSTRUCTOR") {
-      this.isStudent = false;
-      this.isInstructor = true;
-      this.isAdmin = false;
-    } else if (this.access_learnxcel_level == "admin" || this.access_learnxcel_level == "ADMIN") {
-      this.isStudent = false;
-      this.isInstructor = false;
-      this.isAdmin = true;
+    this.userService.currentUser().subscribe((user: any) => {
+      this.currentUser = user;
+    });
+
+    if (this.cUR != null) {
+      const roles = this.cUR.toLowerCase();
+      if (roles.includes('role_student') || roles.includes('student')) {
+        this.isLogged = true;
+        this.isStudent = true;
+      } else if (roles.includes('role_instructor') || roles.includes('instructor')) {
+        this.isLogged = true;
+        this.isInstructor = true;
+      } else if (roles.includes('role_admin') || roles.includes('admin')) {
+        this.isLogged = true;
+        this.isAdmin = true;
+      }
     }
   }
 
-  ngOnInit(): void {
-      
+  ngOnInit(): void {}
+
+  getCurrentUser() {}
+
+  logout() {
+    this.authService.logout();
   }
 }

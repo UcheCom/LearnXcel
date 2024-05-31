@@ -10,7 +10,7 @@ export interface User extends Auth {
   imageUrl: string;
   registeredAt: string;
   updatedAt: string;
-  role: Role;
+  roles: any[];
 }
 
 export interface Auth {
