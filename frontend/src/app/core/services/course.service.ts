@@ -19,8 +19,8 @@ export class CourseService {
     return this.http.get<Course>(`${this.COURSE_URL}`, { headers: this.staticEnv.headers });
   }
 
-  getCourseById(courseId: number): Observable<Course> {
-    return this.http.get<Course>(`${this.COURSE_URL}/${courseId}`, { headers: this.staticEnv.headers });
+  getCourseById(courseId: any) {
+    return this.http.get(`${this.COURSE_URL}/${courseId}`, { headers: this.staticEnv.headers });
   }
 
   /**

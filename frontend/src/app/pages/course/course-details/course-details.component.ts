@@ -6,6 +6,7 @@ import { StaticRoutes } from '../../../core/routes/static.routes';
 import { Title } from '@angular/platform-browser';
 import { Course, Lesson } from '../../../core/models/index.models';
 import { CourseService } from '../../../core/services/index.services';
+import { GlobalConsts } from '../../../core/utils/vars-consts';
 
 @Component({
   selector: 'app-course-details',
@@ -16,7 +17,7 @@ import { CourseService } from '../../../core/services/index.services';
 })
 export class CourseDetailsComponent implements OnInit {
   staticRoutes: StaticRoutes = new StaticRoutes();
-
+  globalConstants: GlobalConsts = new GlobalConsts();
   courseTitle?: string;
   lessons: Lesson[] = [];
   course?: Course;
@@ -28,45 +29,7 @@ export class CourseDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const courseId = params['courseId'];
-      this.updateTitle(courseId);
-      this.findCourseByCourseId(courseId);
-    });
-  }
-
-  currentCourse() {
-    this.activatedRoute.paramMap.subscribe((p: any) => {
-      const courseId = p.get('courseId');
-      this.courseService.getCourseById(courseId).subscribe((res: any) => {
-        this.course = res.data;
-        console.log(this.course);
-      });
-    });
-    this.getAllLessonOfCourse((data: Course) => {
-      this.course = data;
-    });
-  }
-
-  // Fake lessons data
-  getAllLessonOfCourse(cb: (i: Course) => void) {
-    const req = new XMLHttpRequest();
-    req.open('GET', '../../../../assets/data/fake-course.json');
-    req.onload = () => {
-      const data = JSON.parse(req.response);
-      cb(data.data);
-    };
-    req.send();
-  }
-
-  /**
-   * Updates the title of the page
-   * @param {string} courseId : Id of course
-   * @returns {void}
-   */
-  updateTitle(courseId: number): void {
-    const newTitle = `LearnXcel | ${courseId} Course Details`;
-    this.titleService.setTitle(newTitle);
+    this.getCurrentCourseDetailsByCourseId();
   }
 
   /**
@@ -75,10 +38,31 @@ export class CourseDetailsComponent implements OnInit {
    * @param {number} courseId - The ID of the course to retrieve.
    * @return {void} anything.
    */
-  findCourseByCourseId(courseId: number) {
+  getCurrentCourseDetailsByCourseId() {
+    this.activatedRoute.paramMap.subscribe((p: any) => {
+      const courseId = p.get('courseId');
+      this.courseService.getCourseById(courseId).subscribe((res: any) => {
+        this.course = res;
+        this.updateTitle(this.course?.courseName);
+
+        console.log(this.course);
+      });
+    });
+  }
+
+  /**
+   * Updates the title of the page
+   * @param {string} courseId : Title of course
+   * @returns {void}
+   */
+  updateTitle(courseTitle?: String): void {
+    const currentTitle = `${this.globalConstants?.learnXcel} - ${courseTitle}`;
+    this.titleService.setTitle(currentTitle);
+  }
+
+  getCourseByCourseId(courseId: number) {
     this.courseService.getCourseById(courseId).subscribe((res: any) => {
-      this.course = res.data;
-      console.log(this.course);
+      this.course = res;
     });
   }
 }

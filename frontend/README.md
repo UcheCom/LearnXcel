@@ -1,27 +1,82 @@
-# learnXcel
+# LearnXcel - The MVP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+#### Key Features of LearnXcel:
 
-## Development server
+- Authentification
+- Register (Student or Instrcutor)
+- Course Management
+- Content Deliver
+- Interactive Quizzes and Assignments
+- Enroll on course
+- Progress Tracking and Analytics
+- Follow Instructor
+- Search course
+- Search instructor
+- Manage profil (Instructor, Student)
+- Security and Privacy
+- ... in development <\>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Content
 
-## Code scaffolding
+- [Environment](#environment)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Strutures API & UI](#file-descriptions)
+- [Examples of use](#examples-of-use)
+- [Bugs](#bugs)
+- [Authors](#authors)
+- [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Environment
 
-## Build
+This project can run anywhere
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies
 
-## Running unit tests
+- Frontend: [ HTML, CSS, JavaScript & TypeScript, Angular 17+]
+- Backend: [ ???? ]
+- Database: [MySQL 8+](https://dev.mysql.com/downloads/installer/)
+- Version Control: [Install Git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git)
+- Npm: [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+- Clone this repository: `git clone https://github.com/UcheCom/LearnXcel.git`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  #### Frontend project
 
-## Further help
+- Access frontend project directory: `cd LearnXcel/frontend`
+- Install dependencies `npm i`
+- You can install angular : `npm i @angular/cli`
+- Start project `npm start` or `ng serve` if you have angular on your device
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Go to `localhost:4200` (by default) or specified port on your browser and enjoy 😍
+
+  #### Backend project
+
+  - Access backend project directory: `cd LearnXcel/backend`
+  - **Write suite of process here**
+  - Install dependancies ??: `process here`
+  - Run api with ?? `process here`
+
+## File Descriptions
+
+## Examples of use
+
+Credentials to login:
+
+- "email": `example@domain.com`,
+- "password": `yourStrongPassword 🐱‍👤`
+
+## Bugs
+
+No known bugs at this time.
+
+## Authors
+
+Alban Okoby - [Github](https://github.com/alban-okoby) | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
+
+**Author names et links here**
+
+
+## License
