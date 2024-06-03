@@ -8,6 +8,7 @@ export interface User extends Auth {
   username: string;
   phoneNumber: string;
   imageUrl: string;
+  about: string;
   registeredAt: string;
   updatedAt: string;
   roles: any[];
@@ -16,5 +17,4 @@ export interface User extends Auth {
 export interface Auth {
   email: string;
   password: string;
-  token?: string;
 }

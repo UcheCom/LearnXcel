@@ -4,7 +4,7 @@
       <div class="col-xl-8 col-lg-8">
 
         <div class="blogarae__img__2 course__details__img__2" data-aos="fade-up">
-          <img loading="lazy" [src]="course?.imageUrl" alt="learnXcel - ">
+          <img loading="lazy" [src]="course?.imageUrl ? course?.imageUrl : 'assets/img/education/default_course.jpg'" [alt]="globalConstants.learnXcel + ' - ' + course?.courseName">
 
           <!-- <div class="registerarea__content course__details__video">
                       <div class="registerarea__video">
@@ -20,15 +20,16 @@
         <div class="blog__details__content__wraper">
           <div class="course__button__wraper" data-aos="fade-up">
             <div class="course__button">
-              <a href="#">Featured</a>
-              <a class="course__2" href="#">Ux Design</a>
+              @for (tag of course.tags.slice(-5); track tag.tagId) {
+                <a href="javascript:void(0)">{{tag.tagName}}</a>
+              }
             </div>
             <div class="course__date">
-              <p>Last Update:<span> Mai 29, 2024</span></p>
+              <p>Last Update:<span> {{course.lastUpdate ? course.lastUpdate : course.creationDate | date : 'MMM, dd yyyy'}}</span></p>
             </div>
           </div>
           <div class="course__details__heading" data-aos="fade-up">
-            <h3>Making Music with Other People</h3>
+            <h3>{{course.courseName}}</h3>
           </div>
           <div class="course__details__price" data-aos="fade-up">
             <ul>
@@ -38,7 +39,7 @@
               </li>
               <li>
                 <div class="course__details__date">
-                  <i class="icofont-book-alt"></i> 23 Lesson
+                  <i class="icofont-book-alt"></i> {{course.lessons.length}} Lesson(s)
                 </div>
 
               </li>
@@ -55,12 +56,8 @@
             </ul>
           </div>
           <div class="course__details__paragraph" data-aos="fade-up">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate vestibulum rhoncus, dolor
-              eget viverra pretium, dolor tellus aliquet nunc, vitae ultricies erat elit eu lacus. Vestibulum non justo
-              consectetur,
-              cursus ante, tincidunt sapien. Nulla quis diam sit amet turpis interd enim. Vivamus faucibus ex sed nibh
-              egestas elementum. Mauris et bibendum dui. Aenean consequat pulvinar luctus. Suspendisse consectetur
-              tristique
+            <p>
+              {{course.description}}
             </p>
           </div>
 
@@ -69,37 +66,44 @@
 
             <ul>
               <li>
-                Instructor : <span> Alain Gouba</span>
+                Instructor(s) 
+                <span style="margin-left: .5rem;">
+                @for (instructor of course.instructors.slice(-1); track instructor.id) {
+                    {{instructor.displayName }} 
+                      @if (course.instructors.length > 1) {
+                      and {{ course.instructors.length - 1 }} other 
+                      }
+                    }
+                  </span>
               </li>
-              <li>
+              <!-- <li>
                 Lectures : <span> 120 sub</span>
+              </li> -->
+              <li>
+                Duration : <span> {{course.duration | duration}}</span>
               </li>
               <li>
-                Duration : <span> 20h 41m 32s</span>
+                Enrolled : <span> {{course.enrolled}} students</span>
               </li>
               <li>
-                Enrolled : <span> 2 students</span>
-              </li>
-              <li>
-                Total : <span> 222 students</span>
+                Total : <span> {{course.totalStudent}} students</span>
               </li>
             </ul>
             <ul>
               <li>
-                Course level : <span>Intermediate</span>
+                Course level : <span>{{course.level}}</span>
               </li>
               <li>
-                Language : <span>English english</span>
+                Language : <span>{{course.langage}}</span>
               </li>
               <li>
-                Course Status : <span>Available</span>
+                Course Status : <span>{{course.status}}</span>
               </li>
               <li>
-                Reviews : <span>4.8 / 5</span>
+                Reviews : <span>{{course.rating}} / 5</span>
               </li>
             </ul>
           </div>
-
 
           <div class="course__details__tab__wrapper" data-aos="fade-up">
             <div class="row">
@@ -119,7 +123,9 @@
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__four"
-                      type="button"><i class="icofont-teacher"></i>Instructor</button>
+                      type="button"><i class="icofont-teacher"></i>
+                        Instructor
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -168,23 +174,9 @@
                   <h5> Experience Description</h5>
                 </div>
                 <div class="experence__description">
-                  <p class="description__1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate
-                    vestibulum Phasellus rhoncus, dolor eget viverra pretium, dolor tellus aliquet nunc, vitae ultricies
-                    erat elit eu lacus. Vestibulum
-                    non justo consectetur, cursus ante, tincidunt sapien. Nulla quis diam sit amet turpis interdum
-                    accumsan quis nec enim. Vivamus faucibus ex sed nibh egestas elementum. Mauris et bibendum dui.
-                    Aenean consequat
-                    pulvinar luctus
+                  <p class="description__1">
+                   {{course.experienceDescription}}
                   </p>
-                  <p class="description__2">We have covered many special events such as fireworks, fairs, parades,
-                    races, walks, awards ceremonies, fashion shows, sporting events, and even a memorial service.
-                  </p>
-                  <p class="description__3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate vestibulum Phasellus
-                    rhoncus, dolor eget viverra pretium, dolor tellus aliquet nunc, vitae ultricies erat elit eu lacus.
-                    Vestibulum non justo consectetur, cursus ante, tincidunt
-                    sapien. Nulla quis diam sit amet turpis interdum accumsan quis nec enim. Vivamus faucibus ex sed
-                    nibh egestas elementum. Mauris et bibendum dui. Aenean consequat pulvinar luctus.</p>
                 </div>
 
               </div>
@@ -195,7 +187,7 @@
                 <div class="row">
                   <div class="col-lg-4">
                     <div class="review__box">
-                      <div class="review__number">4.7</div>
+                      <div class="review__number">{{course.rating}}</div>
                       <div class="review__icon">
                         <i class="icofont-star"></i>
                         <i class="icofont-star"></i>
@@ -203,7 +195,7 @@
                         <i class="icofont-star"></i>
                         <i class="icofont-star"></i>
                       </div>
-                      <span>(17 Reviews)</span>
+                      <span>({{course.totalReviews}})</span>
                     </div>
                   </div>
                   <div class="col-lg-8 col--30">
@@ -268,7 +260,8 @@
                 </div>
 
 
-                <form action="#" class="add__a__review__wrapper">
+                <!-- Not yet implemented  -->
+                <!-- <form action="#" class="add__a__review__wrapper">
                   <h4>Add a Review</h4>
                   <div class="add__a__review">
                     <h6>Choose your ratings:</h6>
@@ -285,80 +278,81 @@
                   <div class="add__a__review__button">
                     <button class="default__button" type="submit">Submit Now</button>
                   </div>
-                </form>
+                </form> -->
+                <!-- Not yet implemented  -->
+
               </div>
 
+              <!-- Instructor area -->
               <div class="tab-pane fade" id="projects__four" role="tabpanel" aria-labelledby="projects__four">
                 <div class="blogsidebar__content__wraper__2 tab__instructor">
-                  <div class="blogsidebar__content__inner__2">
-                    <div class="blogsidebar__img__2">
-                      <img loading="lazy" src="assets/img/grid/grid_small_2.jpg" alt="blog">
+                  @for (instructor of course.instructors; track instructor.id) {
+                    <div class="blogsidebar__content__inner__2 mt-4">
+                      <div class="blogsidebar__img__2">
+                        <!-- <img loading="lazy" src="assets/img/grid/grid_small_2.jpg" alt="blog"> -->
+                        <img [src]="instructor?.imageUrl ? instructor?.imageUrl : 'assets/img/teacher/default_teacher.jpg'" [alt]="globalConstants.learnXcel + ' - ' + instructor.displayName" style="display: 100px; height: 100px;">
+                      </div>
+                      <div class="tab__instructor__inner">
+                        <div class="blogsidebar__name__2">
+                          <h5>
+                            <a href="javascript:void(0)" [routerLink]="['/instructor', instructor.id, 'profile-details']"> {{instructor.displayName}}</a>
+                          </h5>
+                          <p></p>
+                        </div>
+                        <div class="blog__sidebar__text__2">
+                          <p>
+                            {{instructor.about}}
+                          </p>
+                        </div>
+                        <div class="blogsidbar__icon__2">
+                          <ul>
+                            <li>
+                              <a href="javascript:void(0)"><i class="icofont-facebook"></i></a>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0)"><i class="icofont-youtube-play"></i></a>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0)"><i class="icofont-instagram"></i></a>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0)"><i class="icofont-twitter"></i></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                    <div class="tab__instructor__inner">
-                      <div class="blogsidebar__name__2">
-                        <h5>
-                          <a href="javascript:void(0)" [routerLink]="['/instructor', 0, 'profile-details']"> John Doe</a>
-                        </h5>
-                        <p>Blogger/Photographer</p>
-                      </div>
-                      <div class="blog__sidebar__text__2">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                          been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                          galley</p>
-                      </div>
-                      <div class="blogsidbar__icon__2">
-                        <ul>
-                          <li>
-                            <a href="#"><i class="icofont-facebook"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="icofont-youtube-play"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="icofont-instagram"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="icofont-twitter"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  }
+                  
                 </div>
               </div>
+              <!-- Instructor area -->
             </div>
           </div>
 
           <div class="blog__details__tag" data-aos="fade-up">
             <ul>
-              <li class="heading__tag">
+              <h3 class="heading__tag">
                 Tag
-              </li>
+              </h3>
+              @for (tag of course.tags; track tag.tagId) {
               <li>
-                <a href="#">Business</a>
+                <a href="javascript:void(0)">{{tag.tagName}}</a>
               </li>
-              <li>
-                <a href="#">Design</a>
-              </li>
-              <li>
-                <a href="#">apps</a>
-              </li>
-              <li>
-                <a href="#">data</a>
-              </li>
+            }
             </ul>
             <ul class="share__list">
               <li class="heading__tag">
                 Share
               </li>
               <li>
-                <a href="#"><i class="icofont-twitter"></i></a>
+                <a href="javascript:void(0)"><i class="icofont-twitter"></i></a>
               </li>
               <li>
-                <a href="#"><i class="icofont-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="icofont-facebook"></i></a>
               </li>
               <li>
-                <a href="#"><i class="icofont-instagram"></i></a>
+                <a href="avascript:void(0)"><i class="icofont-instagram"></i></a>
               </li>
             </ul>
           </div>
@@ -392,55 +386,50 @@
               <ul>
                 <li>
                   <div class="course__summery__item">
-                    <span class="sb_label">Instructor:</span><span class="sb_content"><a
-                        href="instructor-details.html">D. Willaim</a></span>
+                    <span class="sb_label">Instructor:</span>
+                    @for (instructor of course.instructors; track instructor.id) {
+                        <span class="sb_content">
+                        <a
+                        href="javascript:void(0)" routerLink="/instructor/{{instructor.id}}/profile-details">{{instructor.displayName + ', '}}</a>
+                      </span>
+                      }
+                    </div>
+                </li>
+                <li>
+                  <div class="course__summery__item">
+                    <span class="sb_label">Start Date</span><span class="sb_content">{{course.startDate | date: 'dd MMM YYYY'}}</span>
                   </div>
                 </li>
                 <li>
                   <div class="course__summery__item">
-                    <span class="sb_label">Start Date</span><span class="sb_content">05 Dec 2024</span>
+                    <span class="sb_label">Total Duration</span><span class="sb_content">{{course.duration | duration}}</span>
                   </div>
                 </li>
                 <li>
                   <div class="course__summery__item">
-                    <span class="sb_label">Total Duration</span><span class="sb_content">08Hrs 32Min</span>
+                    <span class="sb_label">Enrolled</span><span class="sb_content">{{course.enrolled}}</span>
                   </div>
                 </li>
                 <li>
                   <div class="course__summery__item">
-                    <span class="sb_label">Enrolled</span><span class="sb_content">100</span>
+                    <span class="sb_label">Skill Level</span><span class="sb_content">{{course.level}}</span>
                   </div>
                 </li>
                 <li>
                   <div class="course__summery__item">
-                    <span class="sb_label">Lectures</span><span class="sb_content">30</span>
+                    <span class="sb_label">Language</span><span class="sb_content">{{course.langage}}</span>
                   </div>
                 </li>
                 <li>
                   <div class="course__summery__item">
-                    <span class="sb_label">Skill Level</span><span class="sb_content">Basic</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="course__summery__item">
-                    <span class="sb_label">Language</span><span class="sb_content">English</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="course__summery__item">
-                    <span class="sb_label">Quiz</span><span class="sb_content">Yes</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="course__summery__item">
-                    <span class="sb_label">Certificate</span><span class="sb_content">Yes</span>
+                    <span class="sb_label">Quiz</span><span class="sb_content">{{course.haveQuiz === true ? 'Yes' : 'No'}}</span>
                   </div>
                 </li>
               </ul>
             </div>
             <div class="course__summery__button">
               <p>More inquery about course.</p>
-              <a class="default__button default__button--3" href="tel:+4733378901"><i class="icofont-phone"></i> +225 000 000 000 00
+              <a class="default__button default__button--3" href="tel:+0 000 000 000 00"><i class="icofont-phone"></i> +0 000 000 000 00
                 </a>
             </div>
           </div>
@@ -450,27 +439,30 @@
             <div class="follow__icon">
               <ul>
                 <li>
-                  <a href="#"><i class="icofont-facebook"></i></a>
+                  <a href="javascript:void(0)"><i class="icofont-facebook"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="icofont-youtube-play"></i></a>
+                  <a href="javascript:void(0)"><i class="icofont-youtube-play"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="icofont-instagram"></i></a>
+                  <a href="javascript:void(0)"><i class="icofont-instagram"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="icofont-twitter"></i></a>
+                  <a href="javascript:void(0)"><i class="icofont-twitter"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="icofont-instagram"></i></a>
+                  <a href="javascript:void(0)"><i class="icofont-instagram"></i></a>
                 </li>
               </ul>
             </div>
           </div>
-
-          <div class="blogsidebar__content__wraper__2" data-aos="fade-up">
+          
+          <!-- Not yet implemented  -->
+          <!-- <div class="blogsidebar__content__wraper__2" data-aos="fade-up">
             <h4 class="sidebar__title">Related Courses</h4>
             <ul class="course__details__populer__list">
+              @for (relatedCourse of course.relatedCourse; track relatedCourse.courseList) {
+              }
               <li routerLink="{{staticRoutes.ADMIN_COURSES}}/1/details">
                 <div class="course__details__populer__img">
                   <img loading="lazy" src="assets/img/gallery/ai_1.jpg" alt="populer" width="100">
@@ -502,12 +494,14 @@
                 </div>
               </li>
             </ul>
-          </div>
+          </div> -->
 
+          <!-- Not yet implemented -->
           <div class="blogsidebar__content__wraper__2" data-aos="fade-up">
             <h4 class="sidebar__title">Popular tag</h4>
             <div class="populer__tag__list">
               <ul>
+                <!-- @for (tag of course.tags; track tag.tagId) { -->
                 <li><a href="javascript:void(0)">Business</a></li>
                 <li><a href="javascript:void(0)">Design</a></li>
                 <li><a href="javascript:void(0)">apps</a></li>
@@ -518,9 +512,11 @@
                 <li><a href="javascript:void(0)">book</a></li>
                 <li><a href="javascript:void(0)">landing page</a></li>
                 <li><a href="javascript:void(0)">data</a></li>
+              <!-- } -->
               </ul>
             </div>
           </div>
+          <!-- Not yet implemented -->
         </div>
       </div>
     </div>

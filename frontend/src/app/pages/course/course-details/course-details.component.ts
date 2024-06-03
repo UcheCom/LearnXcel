@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 // Custom elements imports
 import { StaticRoutes } from '../../../core/routes/static.routes';
-import { Title } from '@angular/platform-browser';
 import { Course, Lesson } from '../../../core/models/index.models';
 import { CourseService } from '../../../core/services/index.services';
 import { GlobalConsts } from '../../../core/utils/vars-consts';
+import { DurationPipe } from '../../../core/pipes/index.pipe';
 
 @Component({
   selector: 'app-course-details',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,
+    CommonModule,
+    DurationPipe
+  ],
   templateUrl: './course-details.component.html',
   styleUrl: './course-details.component.scss',
 })
@@ -20,7 +25,7 @@ export class CourseDetailsComponent implements OnInit {
   globalConstants: GlobalConsts = new GlobalConsts();
   courseTitle?: string;
   lessons: Lesson[] = [];
-  course?: Course;
+  course!: Course;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,6 +35,18 @@ export class CourseDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentCourseDetailsByCourseId();
+    this.getCourseByInstructorId();
+  }
+
+  getCourseByInstructorId() {
+    this.activatedRoute.paramMap.subscribe((p: any) => {
+      const instructorId = p.get('instructorId');
+      this.courseService
+        .getCourseByInstructorId(instructorId)
+        .subscribe((res: any) => {
+          this.course = res;
+        });
+    });
   }
 
   /**
@@ -44,8 +61,6 @@ export class CourseDetailsComponent implements OnInit {
       this.courseService.getCourseById(courseId).subscribe((res: any) => {
         this.course = res;
         this.updateTitle(this.course?.courseName);
-
-        console.log(this.course);
       });
     });
   }

@@ -10,3 +10,4 @@ export { Role } from "./role";
 export { Answer } from "./answer";
 export { Tag } from "./tag";
 export { Question } from "./question";
+export { RelatedCourse } from "./related-course";

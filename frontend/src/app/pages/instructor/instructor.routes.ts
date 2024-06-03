@@ -29,6 +29,6 @@ export const INSTRUCTOR_ROUTES: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
-  { path: ':instructorId/profile-details', component: InstructorProfileViewDetailsComponent },
+  { path: ':userId/profile-details', component: InstructorProfileViewDetailsComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

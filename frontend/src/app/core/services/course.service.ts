@@ -33,6 +33,15 @@ export class CourseService {
   }
 
   /**
+   * getCourseByInstructorId - get all courses of an instructor
+   * @param instructorId
+   * @returns All courses of instructor
+   */
+  getCourseByInstructorId(instructorId: any) {
+    return this.http.get(`${this.COURSE_URL}/instructor/${instructorId}/courses`, { headers: this.staticEnv.headers });
+  }
+
+  /**
    * Update Lesson Information
    * @param lessonId
    * @returns

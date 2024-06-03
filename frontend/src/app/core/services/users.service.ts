@@ -12,11 +12,14 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   currentUser() {
-    const token = sessionStorage.getItem('learnxcel_access_tk');
     return this.http.get<any>(`${this.USERS_URL}/me`, {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
+      headers:  this.staticEnv.headers
+    });
+  }
+
+  getUserById(user_id: number) {
+    return this.http.get(`${this.USERS_URL}/${user_id}`, {
+      headers:  this.staticEnv.headers
     });
   }
 }
