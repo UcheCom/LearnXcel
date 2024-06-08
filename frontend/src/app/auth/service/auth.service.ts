@@ -69,16 +69,16 @@ export class AuthService {
 
   /**
    * Update User Information
-   * @param user_id 
-   * @param userData 
-   * @returns 
+   * @param user_id
+   * @param userData
+   * @returns
    */
   updateUser(user_id: number, userData?: any): Observable<any> {
     return this.http.put<any>(`${this.API_URL}/users/${user_id}`, userData, {
       headers: this.staticEnv.headers,
     });
   }
-  
+
   /**
    * Log out of the current user and invalidate the JWT token
    * @param param
@@ -119,7 +119,9 @@ export class AuthService {
       localStorage.clear();
       sessionStorage.clear();
       this.router.navigateByUrl('/');
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
     }, 1000);
   }
 }

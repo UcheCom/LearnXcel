@@ -71,76 +71,69 @@ export class LoginComponent {
   }
   submit() {
     this.isRequesting = true;
-    this.auth.login(this.loginModel).subscribe((res: any) => {
-      // @ts-ignore
-      // sessionStorage.token = res.token;
-      // () => {
-      const userRoles = res.user.roles[0];
+    this.auth.login(this.loginModel).subscribe(
+      (res: any) => {
+        const userRoles = res.user.roles[0];
 
-      sessionStorage.setItem('s-learn-xcel-r', userRoles);
-      sessionStorage.setItem('learnxcel_access_tk', res.accessToken);
+        sessionStorage.setItem('s-learn-xcel-r', userRoles);
+        sessionStorage.setItem('learnxcel_access_tk', res.accessToken);
 
-      const rolesName = res.user.roles.map((role: any) => role.name);
-      const rolesId = res.user.roles.map((role: any) => role.id);
-      sessionStorage.setItem('s-learn-xcel-r', userRoles);
+        const rolesName = res.user.roles.map((role: any) => role.name);
+        const rolesId = res.user.roles.map((role: any) => role.id);
 
-      const array1 = Math.floor(Math.random() * 999999999999999);
-      const array2 = Math.floor(Math.random() * 999999999999999);
+        const array1 = Math.floor(Math.random() * 999999999999999);
+        const array2 = Math.floor(Math.random() * 999999999999999);
 
-      sessionStorage.setItem('fy-embr-learn-xcel-r', array1 + rolesId + array2);
-      sessionStorage.setItem('response', res.status);
-      this.isLoggedIn = true;
-      sessionStorage.setItem('fuckYou', 'true');
+        sessionStorage.setItem('fy-embr-learn-xcel-r', array1 + rolesId + array2);
+        sessionStorage.setItem('response', res.status);
+        this.isLoggedIn = true;
+        sessionStorage.setItem('loginStatus', 'true');
 
-      //success msg
-      setTimeout(() => {
-        if (
-          res.user.email != null &&
-          (userRoles.toLowerCase() == 'role_student' || 'student')
-        ) {
-          this.router.navigateByUrl('/student/dashboard');
-          setTimeout(() => {
-          }, 1500);
-        } else if (
-          res.user.email != null &&
-          (userRoles.toLowerCase() == 'role_instructor' || 'instructor')
-        ) {
-          this.router.navigateByUrl('/instructor/dashboard');
-          setTimeout(() => {
-          }, 1500);
-        } else if (
-          res.user.email != null &&
-          (userRoles.toLowerCase() == 'role_admin' || 'admin')
-        ) {
-          this.router.navigateByUrl('/admin/dashboard');
-          setTimeout(() => {
-            // window.location.reload();
-          }, 1500);
-        } else {
-          this.router.navigateByUrl('/');
-        }
+        //success msg
+        setTimeout(() => {
+          if (res.user.email != null) {
+            if (userRoles == 'role_student' || userRoles == 'student') {
+              this.router.navigateByUrl('/student/dashboard');
+              setTimeout(() => {
+                location.reload();
+              }, 300);
+            } else if (userRoles == 'role_instructor' || userRoles == 'instructor') {
+              this.router.navigateByUrl('/instructor/dashboard');
+              setTimeout(() => {
+                location.reload();
+              }, 300);
+            } else if (userRoles == 'role_admin' || userRoles == 'admin') {
+              this.router.navigateByUrl('/admin/dashboard');
+              setTimeout(() => {
+                location.reload();
+              }, 300);
+            } else {
+              this.router.navigateByUrl('/');
+            }
+
+            setTimeout(() => {
+              this.showSuccessMessage(res.user.displayName);
+            }, 1500);
+          }
+        }, 3100);
 
         setTimeout(() => {
-          // window.location.reload();
-          this.showSuccessMessage(res.user.displayName);
+          this.isRequesting = false;
         }, 1500);
-      }, 3100);
-      setTimeout(() => {
-        this.isRequesting = false;
-      }, 1500);
-
-      // },
+      }
+      ,
       (err: any) => {
         // Error msg
         setTimeout(() => {
           this.isRequesting = false;
-          this.showErorMessage();
+          this.showErrorMessage();
           setTimeout(() => {}, 300);
           this.badCredentials();
         }, 1100);
-      };
-    });
+      }
+    );
   }
+
 
   /**
    * badCredentials : Message for bad credentials
@@ -175,7 +168,7 @@ export class LoginComponent {
     });
   }
 
-  showErorMessage(username?: string) {
+  showErrorMessage(username?: string) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',

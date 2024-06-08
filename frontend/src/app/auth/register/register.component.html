@@ -6,55 +6,69 @@
       <p class="login__description">Want to become an instructor ? <a href="javascript:void(0)"
           [routerLink]="staticRoutes.BECOME_AN_INSTRUCTOR">Click here</a></p>
     </div>
-    <form action="#">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xl-6">
           <div class="login__form">
-            <label class="form__label">First Name</label>
-            <input class="common__login__input" type="text" placeholder="First Name">
-          </div>
-        </div>
-        <div class="col-xl-6">
-          <div class="login__form">
-            <label class="form__label">Last Name</label>
-            <input class="common__login__input" type="password" placeholder="Last Name">
+            <label class="form__label">Display Name</label>
+            <input class="common__login__input" type="text" formControlName="displayName" placeholder="Display Name">
+            <!-- <div *ngIf="submitted && form.value.displayName.isEmpty" class="invalid-feedback">
+              <div *ngIf="form.value.displayName.errors?.required">Display Name is required</div>
+            </div> -->
           </div>
         </div>
         <div class="col-xl-6">
           <div class="login__form">
             <label class="form__label">Username</label>
-            <input class="common__login__input" type="password" placeholder="Username">
+            <input class="common__login__input" type="text" formControlName="username" placeholder="Username">
+            <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors?.required">Username is required</div>
+            </div> -->
           </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-12">
           <div class="login__form">
             <label class="form__label">Email</label>
-            <input class="common__login__input" type="password" placeholder="Your Email">
+            <input class="common__login__input" type="email" formControlName="email" placeholder="Your Email">
+            <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors?.required">Email is required</div>
+              <div *ngIf="f.email.errors?.email">Email must be a valid email address</div>
+            </div> -->
           </div>
         </div>
         <div class="col-xl-6">
           <div class="login__form">
             <label class="form__label">Password</label>
-            <input class="common__login__input" type="password" placeholder="Password">
+            <input class="common__login__input" type="password" formControlName="password" placeholder="Password">
+            <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors?.required">Password is required</div>
+              <div *ngIf="f.password.errors?.minlength">Password must be at least 6 characters</div>
+            </div> -->
           </div>
         </div>
         <div class="col-xl-6">
           <div class="login__form">
             <label class="form__label">Re-Enter Password</label>
-            <input class="common__login__input" type="password" placeholder="Re-Enter Password">
+            <input class="common__login__input" type="password" formControlName="matchingPassword" placeholder="Re-Enter Password">
+            <!-- <div *ngIf="submitted && f.matchingPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.matchingPassword.errors?.required">Confirm Password is required</div>
+              <div *ngIf="f.matchingPassword.errors?.mustMatch">Passwords must match</div>
+            </div> -->
           </div>
         </div>
       </div>
 
       <div class="login__form d-flex justify-content-between flex-wrap gap-2">
         <div class="form__check">
-          <input id="accept_pp" type="checkbox"> <label for="accept_pp">Accept the Terms and Privacy
-            Policy</label>
+          <input id="accept_pp" type="checkbox" formControlName="acceptTerms">
+          <label for="accept_pp">Accept the Terms and Privacy Policy</label>
         </div>
       </div>
+
       <div class="login__button">
-        <a class="default__button" href="#">Sing Up</a>
+        <button type="submit" class="default__button">Sign Up</button>
       </div>
     </form>
+
   </div>
 </div>
