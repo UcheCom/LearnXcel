@@ -13,37 +13,36 @@
           <h3 class="become__instructor__small__heading">Become an Instructor</h3>
           <p>Easy steps to apply.</p>
           <h3 class="become__instructor__small__heading">Instructor Rules</h3>
-          <p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose
-            (injected humour and the like).</p>
+          <p>Ready to become an instructor? Let’s submit this form and get started.</p>
           <div class="become__instructor__list">
             <ul>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Basic knowledge and detailed understanding of CSS3 to create.
               </li>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Details Idea about HTMLS, Creating Basic Web Pages using HTMLS
               </li>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Web Page Layout Design and Slider Creation
               </li>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Image Insert method af web site
               </li>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Creating Styling Web Pages Using CSS3
               </li>
@@ -55,19 +54,19 @@
             <ul>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Basic knowledge and detailed understanding of CSS3 to create.
               </li>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Details Idea about HTMLS, Creating Basic Web Pages using HTMLS
               </li>
               <li>
                 <div class="become__instructor__img">
-                  <img loading="lazy" src="../img/dashbord/check__1.png" alt="">
+                  <img loading="lazy" src="assets/img/dashbord/check__1.png" alt="">
                 </div>
                 Web Page Layout Design and Slider Creation
               </li>
@@ -77,64 +76,81 @@
         </div>
       </div>
 
+      <!-- become__instructor__form -->
       <div class="col-xl-6 col-lg-6 col-md-12 col-12">
         <div class="become__instructor__form">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="dashboard__form__wraper">
-                <div class="dashboard__form__input">
-                  <label for="#">First Name</label>
-                  <input type="text" placeholder="John">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="dashboard__form__wraper">
+                  <div class="dashboard__form__input">
+                    <label for="#">Display Name</label>
+                    <input type="text" formControlName="displayName" placeholder="Display Name">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="dashboard__form__wraper">
+                  <div class="dashboard__form__input">
+                    <label for="username">Username/pseudo</label>
+                    <input type="text" formControlName="username" placeholder="Username" id="username">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="dashboard__form__wraper">
+                  <div class="dashboard__form__input">
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" placeholder="Email" id="email">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="dashboard__form__wraper">
+                  <div class="dashboard__form__input">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" placeholder="Password"
+                    id="password"
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="dashboard__form__wraper">
+                  <div class="dashboard__form__input">
+                    <label for="matchingPassword">Repeat Password</label>
+                    <input type="password"
+                    formControlName="matchingPassword" placeholder="Re-Enter Password"
+                    id="matchingPassword"
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="dashboard__form__wraper">
+                  <div class="dashboard__form__input">
+                    <label for="about">Bio / Tell us about yourself (Optionnal)</label>
+                    <textarea name="about" id="about" cols="30"
+                      rows="10" formControlName="about"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="become__instructor__check">
+                <input class="become__instructor__check__input" type="checkbox" value="" id="flexCheckDefault" formControlName="acceptTerms">
+                <label class="become__instructor__check__label" for="flexCheckDefault">
+                  You agree to our friendly <a href="javascript:void(0)">Privacy policy</a>.
+                </label>
+              </div> -->
+              <div class="col-xl-12">
+                <div class="dashboard__form__button">
+                  <button class="default__button"  type="submit" [disabled]="!form.valid ">Submit Request</button>
                 </div>
               </div>
             </div>
-            <div class="col-xl-12">
-              <div class="dashboard__form__wraper">
-                <div class="dashboard__form__input">
-                  <label for="#">Last Name</label>
-                  <input type="text" placeholder="Due">
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-12">
-              <div class="dashboard__form__wraper">
-                <div class="dashboard__form__input">
-                  <label for="#">Email</label>
-                  <input type="text" placeholder="Email">
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-12">
-              <div class="dashboard__form__wraper">
-                <div class="dashboard__form__input">
-                  <label for="#">Phone Number</label>
-                  <input type="text" placeholder="+0 000 000 00 00">
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-12">
-              <div class="dashboard__form__wraper">
-                <div class="dashboard__form__input">
-                  <label for="#">Bio</label>
-                  <textarea name="" id="" cols="30"
-                    rows="10">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</textarea>
-                </div>
-              </div>
-            </div>
-            <div class="become__instructor__check">
-              <input class="become__instructor__check__input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="become__instructor__check__label" for="flexCheckDefault">
-                You agree to our friendly <a href="#">Privacy policy</a>.
-              </label>
-            </div>
-            <div class="col-xl-12">
-              <div class="dashboard__form__button">
-                <a class="default__button" href="#">Send Request</a>
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
+      <!-- end__instructor__form -->
     </div>
   </div>
 </div>
