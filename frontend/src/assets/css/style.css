@@ -11412,7 +11412,7 @@ Breadcrumb Area
   border-radius: 6px;
   margin-top: 1.2rem;
 }
-.create__course__bottom__button a {
+.create__course__bottom__button a, button {
   background: var(--primaryColor);
   color: var(--whiteColor);
   display: inline-block;

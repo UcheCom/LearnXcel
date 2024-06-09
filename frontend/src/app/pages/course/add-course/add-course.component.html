@@ -1,31 +1,35 @@
 <div class="create__course sp_100">
   <div class="container">
+
+    {{form.value | json}}
     <div class="row">
       <div class="col-xl-8 col-lg-8 col-md-12 col-12">
-        <div class="create__course__accordion__wraper">
-          <div class="accordion" id="accordionCourse">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne'"
-                  aria-expanded="true" aria-controls="collapseOne">
-                  Course Info
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#accordionCourse">
-                <div class="accordion-body">
-                  <div class="become__instructor__form">
-                    <div class="row">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                        <div class="dashboard__form__wraper">
-                          <div class="dashboard__form__input">
-                            <label for="#">Course Title</label>
-                            <input type="text" placeholder="Course Title">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="create__course__accordion__wraper">
+            <div class="accordion" id="accordionCourse">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapseOne'" aria-expanded="true" aria-controls="collapseOne">
+                    Course Info
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                  data-bs-parent="#accordionCourse">
+                  <div class="accordion-body">
+                    <div class="become__instructor__form">
+                      <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                          <div class="dashboard__form__wraper">
+                            <div class="dashboard__form__input">
+                              <label for="courseName">Course Title</label>
+                              <input type="text" placeholder="Course Title" formControlName="courseName"
+                                id="courseName">
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <div class="dashboard__form__wraper">
                           <div class="dashboard__form__input">
                             <label for="#">Course Slug</label>
@@ -34,31 +38,152 @@
                         </div>
                       </div> -->
 
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="dashboard__select__heading">
-                            <span>Courses Category</span>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="dashboard__select__heading">
+                              <span>Courses Category</span>
+                            </div>
+                            <div class="dashboard__selector">
+                              <select class="form-select" aria-label="Default select example" formControlName="category">
+                                <option selected>All</option>
+                                <option value="1">Web Design</option>
+                                <option value="2">Graphic</option>
+                                <option value="3">English</option>
+                                <option value="5">Art Painting</option>
+                                <option value="6">App Development</option>
+                                <option value="7">Web Application</option>
+                                <option value="7">AI & ML</option>
+                              </select>
+                            </div>
                           </div>
-                          <div class="dashboard__selector">
-                            <select class="form-select" aria-label="Default select example">
-                              <option selected>All</option>
-                              <option value="1">Web Design</option>
-                              <option value="2">Graphic</option>
-                              <option value="3">English</option>
-                              <option value="4">Spoken English</option>
-                              <option value="5">Art Painting</option>
-                              <option value="6">App Development</option>
-                              <option value="7">Web Application</option>
-                              <option value="7">Php Development</option>
-                            </select>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-2">
+                          <div class="dashboard__form__wraper">
+                            <div class="dashboard__form__input">
+                              <label for="#">About Course</label>
+                              <textarea name="" id="" cols="30" rows="3" formControlName="description"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapseTwo'" aria-expanded="false" aria-controls="collapseTwo">
+                    Course Intro Video & Image
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionCourse">
+                  <div class="accordion-body">
+                    <div class="become__instructor__form">
+                      <div class="row">
+                        <div class="col-xl-12">
+                          <div class="dashboard__form__wraper">
+                            <div class="dashboard__form__input">
+                              <label for="videoIntroUrl">Add Your Video URL</label>
+                              <input type="text" placeholder="Add your Video URL here" formControlName="videoIntroUrl"
+                                id="videoIntroUrl">
+                            </div>
+                          </div>
+                        </div>
+                        <small>Example: <a
+                            href="https://www.youtube.com/watch?v=yourvideoid">https://www.youtube.com/watch?v=yourvideoid</a></small>
+                        <div class="col-xl-12 mt-3">
+                          <div class="dashboard__form__wraper">
+                            <div class="dashboard__form__input">
+                              <label for="imageUrl">Add Your Image URL</label>
+                              <input type="text" placeholder="Add your course image URL here" formControlName="imageUrl"
+                                id="imageUrl">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapseFour'" aria-expanded="true" aria-controls="collapseFour">
+                    Additional Information
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                  data-bs-parent="#accordionCourse">
+                  <div class="accordion-body">
+                    <div class="row become__instructor__form">
+                      <div class="col-xl-6 col-lg-6 col-sm-12">
+                        <div class="dashboard__form__wraper">
+                          <div class="dashboard__form__input">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" placeholder="mm/dd/yyyy" id="startDate" formControlName="startDate">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-sm-12">
+                        <div class="dashboard__form__wraper">
+                          <div class="dashboard__form__input">
+                            <label for="duration">Duration (optional)</label>
+                            <input type="time" placeholder="45 min" id="duration" formControlName="duration">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-sm-12">
+                        <div class="dashboard__form__wraper">
+                          <div class="dashboard__form__input">
+                            <label for="langage">Language</label>
+                            <input type="text" placeholder="langage" id="langage" formControlName="langage">
                           </div>
                         </div>
                       </div>
 
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-2">
+                      <div class="col-xl-6 col-lg-6">
+                        <div class="dashboard__select__heading">
+                          <label>Course Level </label>
+                        </div>
+                        <div class="dashboard__selector">
+                          <select class="form-select" aria-label="Default select example" formControlName="level">
+                            <option value="0" selected>Easy</option>
+                            <option value="1">Medium</option>
+                            <option value="2">Hard</option>
+                            <option value="3">Expert</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      
+
+                      <div class="col-xl-12">
                         <div class="dashboard__form__wraper">
                           <div class="dashboard__form__input">
-                            <label for="#">About Course</label>
+                            <label for="requirements">Requirements</label>
+                            <textarea class="create__course__textarea" name="" id="requirements" cols="30" rows="5"
+                              formControlName="requirements">Add your course benefits here.</textarea>
+                            <small class="create__course__small">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="5" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-info">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                              </svg> Enter for per line.</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-12">
+                        <div class="dashboard__form__wraper">
+                          <div class="dashboard__form__input">
+                            <label for="#">Course Tags</label>
                             <textarea name="" id="" cols="30" rows="3"></textarea>
                           </div>
                         </div>
@@ -68,134 +193,33 @@
                 </div>
               </div>
             </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  [attr.data-bs-target]="'#collapseTwo'" aria-expanded="false" aria-controls="collapseTwo">
-                  Course Intro Video
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionCourse">
-                <div class="accordion-body">
-                  <div class="become__instructor__form">
-                    <div class="row">
-                      <div class="col-xl-12">
-                        <div class="dashboard__form__wraper">
-                          <div class="dashboard__form__input">
-                            <label for="#">Add Your Video URL</label>
-                            <input type="text" placeholder="Add your Video URL here">
-                          </div>
-                        </div>
-                      </div>
-                      <small>Example: <a
-                          href="https://www.youtube.com/watch?v=yourvideoid">https://www.youtube.com/watch?v=yourvideoid</a></small>
-                    </div>
-                  </div>
-                </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+              <div class="cancel__button">
+                <a href="javascript:void(0)" [routerLink]="staticRoutes.INSTRUCTOR_COURSES">Cancel</a>
               </div>
             </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFour">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  [attr.data-bs-target]="'#collapseFour'" aria-expanded="true" aria-controls="collapseFour">
-                  Additional Information
-                </button>
-              </h2>
-              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                data-bs-parent="#accordionCourse">
-                <div class="accordion-body">
-                  <div class="row">
-                    <div class="col-xl-6">
-                      <div class="dashboard__form__wraper">
-                        <div class="dashboard__form__input">
-                          <label for="#">Start Date</label>
-                          <input type="date" placeholder="mm/dd/yyyy">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-6">
-                      <div class="dashboard__form__wraper">
-                        <div class="dashboard__form__input">
-                          <label for="#">Language</label>
-                          <input type="text" placeholder="English">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-6">
-                      <div class="dashboard__form__wraper">
-                        <div class="dashboard__form__input">
-                          <label for="#">Requirements</label>
-                          <textarea class="create__course__textarea" name="" id="" cols="30"
-                            rows="10">Add your course benefits here.</textarea>
-                          <small class="create__course__small">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="5" viewBox="0 0 24 24"
-                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-info">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="12" y1="16" x2="12" y2="12"></line>
-                              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                            </svg> Enter for per line.</small>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-6">
-                      <div class="dashboard__form__wraper">
-                        <div class="dashboard__form__input">
-                          <label for="#">Description</label>
-                          <textarea class="create__course__textarea" name="" id="" cols="30"
-                            rows="10">Add your course description here</textarea>
-                          <small class="create__course__small">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="5" viewBox="0 0 24 24"
-                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-info">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="12" y1="16" x2="12" y2="12"></line>
-                              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                            </svg> Enter for per line.</small>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-12">
-                      <div class="dashboard__form__wraper">
-                        <div class="dashboard__form__input">
-                          <label for="#">Course Tags</label>
-                          <textarea name="" id="" cols="30" rows="3"></textarea>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="col-xl-8 col-lg-8 col-md-6 col-12">
+              <div class="create__course__bottom__button">
+                <button type="submit" class="default__button">
+                <span class="fa fa-floppy-disk"></span>
+                  Save Course</button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-            <div class="cancel__button">
-              <a href="javascript:void(0)" [routerLink]="staticRoutes.INSTRUCTOR_COURSES">Cancel</a>
-            </div>
-          </div>
-          <div class="col-xl-8 col-lg-8 col-md-6 col-12">
-            <div class="create__course__bottom__button">
-              <a href="javascript:void(0)"> <span class="fa fa-floppy-disk"></span> Create Course</a>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
+
 
       <!-- Right area -->
       <div class="col-xl-4 col-lg-4 col-md-12 col-12">
         <app-right-section></app-right-section>
       </div>
     </div>
+
     <!-- Right area -->
 
   </div>
+
 </div>

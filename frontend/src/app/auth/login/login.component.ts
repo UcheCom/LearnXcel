@@ -77,6 +77,7 @@ export class LoginComponent {
 
         sessionStorage.setItem('s-learn-xcel-r', userRoles);
         sessionStorage.setItem('learnxcel_access_tk', res.accessToken);
+        sessionStorage.setItem('learnxcel_access_tk_ID', res.user.id);
 
         const rolesName = res.user.roles.map((role: any) => role.name);
         const rolesId = res.user.roles.map((role: any) => role.id);

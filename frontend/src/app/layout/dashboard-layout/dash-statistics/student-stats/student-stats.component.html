@@ -3,7 +3,7 @@
     <h4>My stats</h4>
   </div>
   <div class="row">
-    <div class="col-xl-4 col-lg-6 col-md-12 col-12">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
       <div class="dashboard__single__counter">
         <div class="counterarea__text__wraper">
           <div class="counter__img">
@@ -11,16 +11,14 @@
           </div>
           <div class="counter__content__wraper">
             <div class="counter__number">
-              <span class="counter">0</span>+
-
+              <span class="counter"> {{ followingCourses.length }}</span>+
             </div>
             <p>Enrolled Courses</p>
-
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xl-4 col-lg-6 col-md-12 col-12">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
       <div class="dashboard__single__counter">
         <div class="counterarea__text__wraper">
           <div class="counter__img">
@@ -28,33 +26,15 @@
           </div>
           <div class="counter__content__wraper">
             <div class="counter__number">
-              <span class="counter">00</span>+
-
-            </div>
-            <p>Active Courses</p>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-lg-6 col-md-12 col-12">
-      <div class="dashboard__single__counter">
-        <div class="counterarea__text__wraper">
-          <div class="counter__img">
-            <img loading="lazy" src="assets/img/counter/counter__3.png" alt="counter">
-          </div>
-          <div class="counter__content__wraper">
-            <div class="counter__number">
-              <span class="counter">0</span>
-
+              <span class="counter">{{ completedCourses.length }}</span>
             </div>
             <p>Complete Courses</p>
-
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xl-4 col-lg-6 col-md-12 col-12">
+    
+    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
       <div class="dashboard__single__counter">
         <div class="counterarea__text__wraper">
           <div class="counter__img">
@@ -63,10 +43,24 @@
           <div class="counter__content__wraper">
             <div class="counter__number">
               <span class="counter">0</span>
-
             </div>
             <p>Complete Quizzes</p>
 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+      <div class="dashboard__single__counter">
+        <div class="counterarea__text__wraper">
+          <div class="counter__img">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="counter__content__wraper">
+            <div class="counter__number">
+              <span class="counter">0</span>
+            </div>
+            <p>Favorites Courses</p>
           </div>
         </div>
       </div>

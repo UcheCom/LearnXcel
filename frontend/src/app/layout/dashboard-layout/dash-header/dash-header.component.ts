@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 // Custom imports
 import { StaticRoutes } from '../../../core/routes/static.routes';
@@ -9,7 +10,7 @@ import { AuthService } from '../../../auth/service/auth.service';
 @Component({
   selector: 'app-dash-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dash-header.component.html',
   styleUrl: './dash-header.component.scss',
 })
@@ -18,6 +19,8 @@ export class DashHeaderComponent {
   @Input() userName: string = 'Alain Gouba';
   @Input() instructorImageUrl: string = 'assets/img/teacher/default_teacher.jpg';
   studentImageUrl: string = 'assets/img/teacher/default_student.jpg';
+  adminImageUrl: string = 'assets/img/teacher/teacher__3.png';
+
   @Input() starRating: number = 0;
   @Input() reviewsCount: number = 0;
   @Input() createCourseLink: string = 'create-course';

@@ -18,7 +18,7 @@ export interface Course {
   requirements: string;
   lessons: Lesson[];
   instructors: Instructor[];
-  category: CourseCategory;
+  category: CourseCategory | null | undefined;
   tags: Tag[];
 
   level: number;

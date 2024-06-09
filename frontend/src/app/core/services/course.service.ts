@@ -9,14 +9,21 @@ import { Env } from '../../../environments/env';
   providedIn: 'root',
 })
 export class CourseService {
-  staticEnv: Env = new Env();
+  private staticEnv: Env = new Env();
+  private COURSE_URL =  this.staticEnv.LEARNXCEL_API_URL + '/courses';
 
   constructor(private http: HttpClient) {}
 
-  COURSE_URL =  this.staticEnv.LEARNXCEL_API_URL + '/courses';
-
   getAllCourses(): Observable<Course> {
     return this.http.get<Course>(`${this.COURSE_URL}`, { headers: this.staticEnv.headers });
+  }
+
+  getAllPublishCourses(): Observable<any> {
+    return this.http.get<any>(`${this.COURSE_URL}/publish`, { headers: this.staticEnv.headers });
+  }
+
+  getAllPendingCourses(): Observable<Course> {
+    return this.http.get<Course>(`${this.COURSE_URL}/pending`, { headers: this.staticEnv.headers });
   }
 
   getCourseById(courseId: any) {
@@ -51,11 +58,12 @@ export class CourseService {
   }
   /**
    * createCourse - create new course
-   * @param course
+   * @param course : Course body
+   * @param instructorId : Instructor Id
    * @returns
    */
-  createCourse(course: Course): Observable<Course> {
-    return this.http.post<Course>(`${this.COURSE_URL}`, course, { headers: this.staticEnv.headers });
+  createCourse(course: Course, instructorId: any): Observable<Course> {
+    return this.http.post<Course>(`${this.COURSE_URL}/${instructorId}`, course, { headers: this.staticEnv.headers });
   }
 
   /**

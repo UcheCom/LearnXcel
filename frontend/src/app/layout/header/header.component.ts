@@ -17,13 +17,13 @@ import { AuthService } from '../../auth/service/auth.service';
 })
 export class HeaderComponent implements OnInit {
   staticRoutes: StaticRoutes = new StaticRoutes();
-  accesToken: string | null;
-  cUR: string | null;
   currentUser: any;
   isLogged: boolean = false;
   isStudent: boolean = false;
   isInstructor: boolean = false;
   isAdmin: boolean = false;
+  cUR: string | null;
+  accesToken: string | null;
 
   constructor(private userService: UsersService,
     private authService: AuthService

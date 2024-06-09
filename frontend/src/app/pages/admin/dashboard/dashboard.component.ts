@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { DashStatisticsComponent } from '../../../layout/dashboard-layout/dash-statistics/dash-statistics.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [
+    DashStatisticsComponent
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

@@ -4,7 +4,7 @@
       <div class="col-xl-8 col-lg-8">
 
         <div class="blogarae__img__2 course__details__img__2" data-aos="fade-up">
-          <img loading="lazy" [src]="course?.imageUrl ? course?.imageUrl : 'assets/img/education/default_course.jpg'" [alt]="globalConstants.learnXcel + ' - ' + course?.courseName">
+          <img loading="lazy" [src]="course.imageUrl ? course.imageUrl : 'assets/img/education/default_course.jpg'" [alt]="globalConstants.learnXcel + ' - ' + course.courseName">
 
           <!-- <div class="registerarea__content course__details__video">
                       <div class="registerarea__video">
@@ -66,12 +66,12 @@
 
             <ul>
               <li>
-                Instructor(s) 
+                Instructor(s)
                 <span style="margin-left: .5rem;">
                 @for (instructor of course.instructors.slice(-1); track instructor.id) {
-                    {{instructor.displayName }} 
+                    {{instructor.displayName }}
                       @if (course.instructors.length > 1) {
-                      and {{ course.instructors.length - 1 }} other 
+                      and {{ course.instructors.length - 1 }} other
                       }
                     }
                   </span>
@@ -323,7 +323,7 @@
                       </div>
                     </div>
                   }
-                  
+
                 </div>
               </div>
               <!-- Instructor area -->
@@ -456,7 +456,7 @@
               </ul>
             </div>
           </div>
-          
+
           <!-- Not yet implemented  -->
           <!-- <div class="blogsidebar__content__wraper__2" data-aos="fade-up">
             <h4 class="sidebar__title">Related Courses</h4>

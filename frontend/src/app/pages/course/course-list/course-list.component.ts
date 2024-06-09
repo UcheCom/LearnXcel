@@ -30,14 +30,15 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllCourses();
+    this.getAllPublishCourses();
   }
 
 
   // Retrive all courses)
-  getAllCourses() {
-    this.courseService.getAllCourses().subscribe((courses: any) => {
+  getAllPublishCourses() {
+    this.courseService.getAllPublishCourses().subscribe((courses: any) => {
       this.courses = courses.data;
+      console.log(this.courses);
     });
   }
 }
