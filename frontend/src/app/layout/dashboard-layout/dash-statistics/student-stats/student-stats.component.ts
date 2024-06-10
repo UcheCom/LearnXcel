@@ -29,17 +29,16 @@ export class StudentStatsComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
-    this.getAllInstructorCourses();
+    this.getAllStudentCourses();
   }
 
-  getAllInstructorCourses() {
-    this.courseService.getCourseByInstructorId(this.myId).subscribe((courses: any) => {
+  getAllStudentCourses() {
+    this.courseService.getCourseByStudentId(this.myId).subscribe((courses: any) => {
       this.allCourses = courses;
 
       this.allCourses.forEach((course: any) => {
-        if (course.published === true) {
+        if (course.published === true && course.completed === true) {
           this.completedCourses.push(course);
         } else {
           this.followingCourses.push(course);

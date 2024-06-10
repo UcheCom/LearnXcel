@@ -10,24 +10,32 @@ import { Env } from '../../../environments/env';
 })
 export class CourseService {
   private staticEnv: Env = new Env();
-  private COURSE_URL =  this.staticEnv.LEARNXCEL_API_URL + '/courses';
+  private COURSE_URL = this.staticEnv.LEARNXCEL_API_URL + '/courses';
 
   constructor(private http: HttpClient) {}
 
   getAllCourses(): Observable<Course> {
-    return this.http.get<Course>(`${this.COURSE_URL}`, { headers: this.staticEnv.headers });
+    return this.http.get<Course>(`${this.COURSE_URL}`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   getAllPublishCourses(): Observable<any> {
-    return this.http.get<any>(`${this.COURSE_URL}/publish`, { headers: this.staticEnv.headers });
+    return this.http.get<any>(`${this.COURSE_URL}/publish`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   getAllPendingCourses(): Observable<Course> {
-    return this.http.get<Course>(`${this.COURSE_URL}/pending`, { headers: this.staticEnv.headers });
+    return this.http.get<Course>(`${this.COURSE_URL}/pending`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   getCourseById(courseId: any) {
-    return this.http.get(`${this.COURSE_URL}/${courseId}`, { headers: this.staticEnv.headers });
+    return this.http.get(`${this.COURSE_URL}/${courseId}`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   /**
@@ -36,7 +44,9 @@ export class CourseService {
    * @returns
    */
   getAllLessonOfCourseByCourseId(courseId: number): Observable<Lesson> {
-    return this.http.get<Lesson>(`${this.COURSE_URL}/${courseId}/lessons`, { headers: this.staticEnv.headers });
+    return this.http.get<Lesson>(`${this.COURSE_URL}/${courseId}/lessons`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   /**
@@ -45,7 +55,21 @@ export class CourseService {
    * @returns All courses of instructor
    */
   getCourseByInstructorId(instructorId: any) {
-    return this.http.get(`${this.COURSE_URL}/instructor/${instructorId}/courses`, { headers: this.staticEnv.headers });
+    return this.http.get(
+      `${this.COURSE_URL}/instructor/${instructorId}/courses`,
+      { headers: this.staticEnv.headers }
+    );
+  }
+
+  /**
+   * getCourseByStudentId - get all courses of a student
+   * @param instructorId
+   * @returns All courses of instructor
+   */
+  getCourseByStudentId(instructorId: any) {
+    return this.http.get(`${this.COURSE_URL}/student/${instructorId}/courses`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   /**
@@ -54,7 +78,10 @@ export class CourseService {
    * @returns
    */
   updateLessonOfCourse(lessonId: number): Observable<any> {
-    return this.http.put<any>(`${this.staticEnv.LEARNXCEL_API_URL}/lessons/${lessonId}`, { headers: this.staticEnv.headers });
+    return this.http.put<any>(
+      `${this.staticEnv.LEARNXCEL_API_URL}/lessons/${lessonId}`,
+      { headers: this.staticEnv.headers }
+    );
   }
   /**
    * createCourse - create new course
@@ -63,7 +90,38 @@ export class CourseService {
    * @returns
    */
   createCourse(course: Course, instructorId: any): Observable<Course> {
-    return this.http.post<Course>(`${this.COURSE_URL}/${instructorId}`, course, { headers: this.staticEnv.headers });
+    return this.http.post<Course>(
+      `${this.COURSE_URL}/${instructorId}`,
+      course,
+      { headers: this.staticEnv.headers }
+    );
+  }
+
+  /**
+   * Enrolls a student in a course.
+   *
+   * @param {Course} course - The course to enroll the student in.
+   * @param {any} studentId - The ID of the student to enroll.
+   * @return {Observable<any>} An observable that emits the result of the enrollment operation.
+   */
+  enrollStudent(courseId: number, studentId: number): Observable<any> {
+    return this.http.post<any>(
+      `${this.COURSE_URL}/${courseId}/enroll/${studentId}`,
+      { headers: this.staticEnv.headers }
+    );
+  }
+
+  /**
+   * Unenrolls a student from a course.
+   *
+   * @param {Course} courseId - The ID of the course from which the student should be unenrolled.
+   * @param {any} studentId - The ID of the student to be unenrolled.
+   * @return {Observable<any>} An Observable that emits the result of the unenrollment operation.
+   */
+  unenrollStudent(courseId: Course, studentId: any): Observable<any> {
+    return this.http.delete<any>(`${this.COURSE_URL}/${courseId}/unenroll/${studentId}`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   /**
@@ -72,11 +130,27 @@ export class CourseService {
    * @returns
    */
   updateCourse(course: Course): Observable<Course> {
-    return this.http.put<Course>(`${this.COURSE_URL}/${course.courseId}`, course, { headers: this.staticEnv.headers });
+    return this.http.put<Course>(
+      `${this.COURSE_URL}/${course.courseId}`,
+      course,
+      { headers: this.staticEnv.headers }
+    );
   }
 
-  updateCourseWithCourseId(course: Course, courseId: number): Observable<Course> {
-    return this.http.put<Course>(`${this.COURSE_URL}/${courseId}`, course, { headers: this.staticEnv.headers });
+  /**
+   * Updates a course with the given course ID.
+   *
+   * @param {Course} course - The course object containing the updated information.
+   * @param {number} courseId - The ID of the course to be updated.
+   * @return {Observable<Course>} An observable that emits the updated course.
+   */
+  updateCourseWithCourseId(
+    course: Course,
+    courseId: number
+  ): Observable<Course> {
+    return this.http.put<Course>(`${this.COURSE_URL}/${courseId}`, course, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   /**
@@ -85,7 +159,9 @@ export class CourseService {
    * @returns
    */
   deleteCourseById(courseId: number): Observable<any> {
-    return this.http.delete<any>(`${this.COURSE_URL}/${courseId}`, { headers: this.staticEnv.headers });
+    return this.http.delete<any>(`${this.COURSE_URL}/${courseId}`, {
+      headers: this.staticEnv.headers,
+    });
   }
 
   /**
@@ -94,6 +170,9 @@ export class CourseService {
    * @returns
    */
   deleteLessonById(lessonId: number): Observable<any> {
-    return this.http.delete<any>(`${this.staticEnv.LEARNXCEL_API_URL}/lessons/${lessonId}`, { headers: this.staticEnv.headers });
+    return this.http.delete<any>(
+      `${this.staticEnv.LEARNXCEL_API_URL}/lessons/${lessonId}`,
+      { headers: this.staticEnv.headers }
+    );
   }
 }
