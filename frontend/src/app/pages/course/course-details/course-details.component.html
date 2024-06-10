@@ -379,7 +379,8 @@
               </div>
             </div>
             <div class="course__summery__button">
-              <a class="default__button" href="javascript:void(0)">Add To Favorites</a>
+              <a class="default__button" href="javascript:void(0)" (click)="onAddFavoriteCourse()" *ngIf="favorisState === false">Add To Favorites</a>
+              <a class="default__button default__button--2" href="javascript:void(0)" (click)="onRemoveFavoriteCourse()" *ngIf="favorisState === true">Remove To Favorites</a>
                 <a class="default__button default__button--1" href="javascript:void(0)" (click)="onEnrollToCourse()" *ngIf="enrollmentState === false">Enroll Now</a>
                 <a class="default__button default__button--2" href="javascript:void(0)" (click)="onUnEnrollToCourse()" *ngIf="enrollmentState === true">Already Enrolled</a>
 

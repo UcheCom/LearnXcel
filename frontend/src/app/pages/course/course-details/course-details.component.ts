@@ -28,7 +28,9 @@ export class CourseDetailsComponent implements OnInit {
   lessons: Lesson[] = [];
   course!: Course;
   studentCourses: Course[] = [];
+  studentFavorisCourses: Course[] = [];
   enrollmentState: boolean = false;
+  favorisState: boolean = false;
   myId: any = sessionStorage.getItem('learnxcel_access_tk_ID');
 
   constructor(
@@ -42,6 +44,48 @@ export class CourseDetailsComponent implements OnInit {
     this.getCurrentCourseDetailsByCourseId();
     this.getCourseByInstructorId();
     this.getAllStudentCourses();
+  }
+
+  onAddFavoriteCourse() {
+    this.activatedRoute.paramMap.subscribe((p: any) => {
+      const courseId = p.get('courseId');
+      this.courseService.addFavorisCourse(courseId, this.myId).subscribe(() => {
+        setTimeout(
+          () => this.notificationService.showSuccessMessage('Favoris ❤'),
+          400
+        );
+        this.favorisState = true;
+      });
+    });
+  }
+
+  onRemoveFavoriteCourse() {
+    this.activatedRoute.paramMap.subscribe((p: any) => {
+      const courseId = p.get('courseId');
+      Swal.fire({
+        title: 'Do you want to remove this course from your favorite list ?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `Don't UnEnrollment`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.courseService
+            .removeFavorisCourse(courseId, this.myId)
+            .subscribe(() => {
+              setTimeout(
+                () =>
+                  this.notificationService.showSuccessMessage(
+                    'Favoris removed ❌'
+                  ),
+                400
+              );
+              this.favorisState = false;
+            }
+          );
+        }
+      });
+    });
   }
 
   /**
@@ -70,27 +114,44 @@ export class CourseDetailsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((p: any) => {
       const courseId = p.get('courseId');
       Swal.fire({
-        title: "Do you want to UnEnrollment of this course?",
+        title: 'Do you want to UnEnrollment of this course?',
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonText: "Yes",
-        denyButtonText: `Don't UnEnrollment`
+        confirmButtonText: 'Yes',
+        denyButtonText: `Don't UnEnrollment`,
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.courseService.unenrollStudent(courseId, this.myId).subscribe(() => {
-            setTimeout(
-              () => this.notificationService.showSuccessMessage('UnEnrollment'),
-              400
-            );
-            this.enrollmentState = false;
-          });
+          this.courseService
+            .unenrollStudent(courseId, this.myId)
+            .subscribe(() => {
+              setTimeout(
+                () =>
+                  this.notificationService.showSuccessMessage('UnEnrollment'),
+                400
+              );
+              this.enrollmentState = false;
+            });
         } else if (result.isDenied) {
-          
+           Swal.fire('Changes are not saved', '', 'info')
         }
       });
-      
     });
+  }
+
+  getAllStudentFavorisCourses() {
+    this.courseService
+      .getCourseByStudentId(this.myId)
+      .subscribe((courses: any) => {
+        this.studentCourses = courses;
+
+        this.studentFavorisCourses.forEach((course: any) => {
+          if (this.course.courseId == course.courseId) {
+            this.favorisState = true;
+          } else {
+            this.favorisState = false;
+          }
+        });
+      });
   }
 
   getAllStudentCourses() {

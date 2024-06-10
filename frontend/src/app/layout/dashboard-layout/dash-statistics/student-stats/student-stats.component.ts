@@ -17,6 +17,7 @@ export class StudentStatsComponent implements OnInit {
   followingCourses: Course[] = [];
   completedCourses: Course[] = [];
   allCourses: Course[] = [];
+  favoriteCourses: Course[] = [];
   currentUser!: any;
   myId: any = sessionStorage.getItem('learnxcel_access_tk_ID');
 
@@ -31,6 +32,7 @@ export class StudentStatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllStudentCourses();
+    this.getAllStudentFavoritesCourses();
   }
 
   getAllStudentCourses() {
@@ -44,6 +46,12 @@ export class StudentStatsComponent implements OnInit {
           this.followingCourses.push(course);
         }
       })
+    });
+  }
+
+  getAllStudentFavoritesCourses() {
+    this.courseService.getAllFavoritesByStudent(this.myId).subscribe((courses: any) => {
+      this.favoriteCourses = courses;
     });
   }
 }

@@ -124,6 +124,38 @@ export class CourseService {
     });
   }
 
+/**
+ * Adds a course to the favorites of a student.
+ *
+ * @param {Course} courseId - The ID of the course to be added.
+ * @param {any} studentId - The ID of the student.
+ * @return {Observable<any>} An observable that emits the result of the operation.
+ */
+  addFavorisCourse(courseId: Course, studentId: any): Observable<any> {
+    return this.http.post<any>(`${this.COURSE_URL}/${courseId}/favoris/${studentId}`, {
+      headers: this.staticEnv.headers,
+    });
+  }
+
+/**
+ * Removes a course from the favorites of a student.
+ *
+ * @param {number} courseId - The ID of the course to be removed.
+ * @param {number} studentId - The ID of the student.
+ * @return {Observable<any>} An observable that emits the result of the operation.
+ */
+  removeFavorisCourse(courseId: number, studentId: number): Observable<any> {
+    return this.http.delete<any>(`${this.COURSE_URL}/${courseId}/favoris/${studentId}`, {
+      headers: this.staticEnv.headers,
+    });
+  }
+
+  getAllFavoritesByStudent(studentId: number): Observable<any> {
+    return this.http.get<any>(`${this.COURSE_URL}/favoris/${studentId}/courses`, {
+      headers: this.staticEnv.headers,
+    });
+  }
+
   /**
    * updateCourse - update course
    * @param course
